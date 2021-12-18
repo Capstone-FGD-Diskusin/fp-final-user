@@ -1,0 +1,22 @@
+.space {
+    padding-top: 125px;
+}
+
+.text1 {
+    color: rgba(255, 136, 52, 1);
+}
+
+.text2 {
+    text-align: center;
+    padding-top: 39px;
+    padding-bottom: 39px;
+}
+
+.Butsub {
+    text-align: center;
+    position: relative;
+    padding-right: 186px;
+    padding-left: 186px;
+    background-color: rgba(55, 63, 65, 1);
+    border: rgba(55, 63, 65, 1);
+}

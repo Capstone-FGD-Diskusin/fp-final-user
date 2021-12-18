@@ -1,14 +1,18 @@
-import { Route, Routes } from "react-router-dom";
-
+import { BrowserRouter ,Route, Routes } from "react-router-dom";
+import HomeDefault from "./pages/HomeDefault/HomeDefault";
+import React from 'react';
+import Register from "./pages/Register/Register";
+import Login from "./pages/Login/Login";
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route>
-            
-          </Route>
+          <Route path="/" element={<HomeDefault/>}/>
+          <Route path="/Login" element={<Login/>}/>
+          <Route path="/Register" element={<Register/>}/>
         </Routes>
       </BrowserRouter>
     </div>

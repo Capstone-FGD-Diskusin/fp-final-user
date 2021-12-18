@@ -1,14 +1,13 @@
 import React from 'react'
 import NavbarHome from '../../components/NavbarHome/NavbarHome'
-import Regis from '../../components/Register/Regis'
+import LoginContent from '../../components/LoginContent/LoginContent'
 
-function Register() {
+export default function Login() {
     return (
         <div>
             <NavbarHome />
-            <Regis />
+            <LoginContent />
+
         </div>
     )
 }
-
-export default Register

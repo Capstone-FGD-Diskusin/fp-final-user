@@ -104,9 +104,13 @@ export default function Regis() {
                                     feedbackType="invalid"
                                 />
                             </Form.Group>
-                            <Button type="submit" className={style.Butsub}>Daftar</Button>
+                            <div className="d-grid gap-2">
+                                <Button className={style.ButDaf} size="lg">
+                                    MASUK
+                                </Button>
+                            </div>
 
-                            <h6>Sudah Punya Akun ? </h6><Link></Link>
+                            <div className={style.space2}><h6>Tidak Punya Akun? <Link to={`/Register`} className={style.text3}>Daftar Disini</Link></h6></div>
                         </Form>
                     </Col>
                 </Row>

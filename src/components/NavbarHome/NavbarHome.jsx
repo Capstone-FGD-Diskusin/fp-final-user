@@ -14,8 +14,8 @@ export default function NavbarHome() {
                         <Nav className="me-auto">
                         </Nav>
                         <Nav>
-                            <Nav.Link href="/Login" ><h6 className={style.text1}>Log in</h6></Nav.Link>
-                            <Nav.Link href="/Register" >
+                            <Nav.Link href="Login" ><h6 className={style.text1}>Log in</h6></Nav.Link>
+                            <Nav.Link href="Register" >
                                 <Button className={style.Tombol}>
                                     Daftar Sekarang
                                 </Button>

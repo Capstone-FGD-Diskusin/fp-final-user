@@ -20,3 +20,16 @@
     background-color: rgba(55, 63, 65, 1);
     border: rgba(55, 63, 65, 1);
 }
+
+.space2 {
+    padding-top: 30px;
+}
+
+.text3:hover {
+    color: blue;
+}
+
+.ButDaf {
+    background-color: rgba(55, 63, 65, 1);
+    border: rgba(55, 63, 65, 1);
+}

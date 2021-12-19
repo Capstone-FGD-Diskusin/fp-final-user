@@ -16,7 +16,6 @@ export default function LoginContent() {
             event.preventDefault();
             event.stopPropagation();
         }
-
         setValidated(true);
     }
     return (
@@ -31,7 +30,6 @@ export default function LoginContent() {
                     <Col sm={4}>
                         <h3 className={style.text1}>Logo</h3>
                         <h4 className={style.text2}>Masuk</h4>
-
                         <Form noValidate validated={validated} onSubmit={handleSubmit}>
                             <Row className="mb-3">
                                 <Form.Group controlId="validationCustom01">
@@ -58,9 +56,9 @@ export default function LoginContent() {
                                     </Form.Control.Feedback>
                                 </Form.Group>
                             </Row >
-                            <div className="d-grid gap-2">
-                                <Button className={style.ButDaf} size="lg">
-                                    Daftar
+                            <div className="d-grid gap-2" >
+                                <Button className={style.ButDaf} size="lg" type="submit">
+                                    MASUK
                                 </Button>
                             </div>
                         </Form>

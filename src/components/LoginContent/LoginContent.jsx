@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import { useState } from "react";
 import gambar from "../../img/google.png"
 import gambar2 from "../../img/facebook.png"
+import gambar3 from "../../img/login.png"
 import Footer from '../Footer/Footer';
 
 export default function LoginContent() {
@@ -23,7 +24,7 @@ export default function LoginContent() {
             <Container className={style.space}>
                 <Row>
                     <Col sm={7}>
-                        asdas
+                        <Image src={gambar3} width="90%" />
                     </Col>
                     <Col sm={1}>
                     </Col>

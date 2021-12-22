@@ -59,7 +59,7 @@ export default function LoginContent() {
                             </Row >
                             <div className="d-grid gap-2" >
                                 <Button className={style.ButDaf} size="lg" type="submit">
-                                    MASUK
+                                    <Link to={`/Login/HomeLogin`} > MASUK </Link>
                                 </Button>
                             </div>
                         </Form>

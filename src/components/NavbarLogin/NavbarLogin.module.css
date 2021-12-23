@@ -67,3 +67,87 @@ Dropdown-Toogle {
     color: white;
     background-color: white;
 }
+
+.navbar{
+    width: 100%;
+    height: 70px;
+    /* background: red; */
+    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+.content{
+    width: 80%;
+    height: 70px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background: aqua; */
+}
+
+.logo{
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 32px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.2px;
+    text-transform: uppercase;
+    color: #FF8834;
+}
+
+.middle{
+    display: flex;
+    gap: 2rem;
+}
+
+.right{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.profile{
+    width: 40px;
+    height: 40px;
+    border-radius: 100px;
+    background: #F4F5F4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bar{
+    display: none;
+}
+
+.dropdown{
+    display: none;
+}
+
+.dropdownActive{
+    width: 100%;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    background: #FFFFFF;
+    /* border: 1px solid; */
+}
+
+@media only screen and (max-width: 800px) {
+    .middle{
+        display: none;
+    }
+    .bar{
+        width: 50%;
+        /* background: red; */
+        display: flex;
+        justify-content: flex-end;
+        
+    }
+}

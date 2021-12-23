@@ -1,16 +1,66 @@
-import React from 'react'
+import React, {useState} from 'react'
 import style from './NavbarLogin.module.css'
-import { Container, Navbar, Nav, NavDropdown, Image, Button, ImageDropdown, Dropdown } from 'react-bootstrap'
-import gambar from "../../img/profile.png"
-import gambar2 from "../../img/settings.png"
+// import { Container, Navbar, Nav, NavDropdown, Image, Button, ImageDropdown, Dropdown } from 'react-bootstrap'
+// import gambar from "../../img/profile.png"
+// import gambar2 from "../../img/settings.png"
 // import { ImOffice } from "react-icons/im";
+import { NavbarLoginData } from './NavbarLoginData';
+import * as FiIcons from 'react-icons/fi';
+import * as FaIcons from 'react-icons/fa';
 
 export default function NavbarLogin() {
+    const [isDown, setIsDown] = useState(false);
+    const setDown = () => {
+        setIsDown(!isDown)
+    }
+
     return (
         <div>
-
-
-            <Navbar collapseOnSelect expand="lg" className={style.back} >
+            <div className={style.navbar}>
+                <div className={style.content}>
+                    <div className={style.logo}>
+                        LOGO
+                    </div>
+                    <div className={style.middle}>
+                    {
+                        NavbarLoginData.map((item,index)=>{
+                            return(
+                                <div key={index}>
+                                    {item.title}
+                                </div>
+                            )
+                        })
+                    }
+                    </div>
+                    <div className={style.bar}>
+                        <FaIcons.FaBars size={25} onClick={setDown} />
+                    </div>
+                    <div className={style.right}>
+                        <div>
+                            <FiIcons.FiBell size={20}/>
+                        </div>
+                        <div>
+                            <FiIcons.FiSettings size={20}/>
+                        </div>
+                        <div className={style.profile}>
+                            <FiIcons.FiUser size={20}/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className={isDown ? style.dropdownActive : style.dropdown} >
+                {
+                    NavbarLoginData.map((item, index) => {
+                        // console.log(isDown)
+                        return(
+                            <div className={style.dropdownItem} key={index}>
+                                {item.title}
+                            </div>
+                        )
+                    })
+                }
+            </div>
+            {/* <Navbar collapseOnSelect expand="lg" className={style.back} >
                 <Container>
                     <Nav className="me-auto">
                         <Navbar.Brand href="#home"> <b className={style.text2}>LOGO</b> </Navbar.Brand>
@@ -50,8 +100,7 @@ export default function NavbarLogin() {
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
-            </Navbar>
-
+            </Navbar> */}
         </div >
     )
 }

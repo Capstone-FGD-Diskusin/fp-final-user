@@ -8,8 +8,6 @@ import gambar2 from "../../img/settings.png"
 export default function NavbarLogin() {
     return (
         <div>
-
-
             <Navbar collapseOnSelect expand="lg" className={style.back} >
                 <Container>
                     <Nav className="me-auto">
@@ -18,7 +16,6 @@ export default function NavbarLogin() {
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto">
-
                         </Nav>
                         <Nav className="me-auto">
                             <Nav.Link href="#Beranda" className={style.spaceNav}>Beranda</Nav.Link>
@@ -26,7 +23,6 @@ export default function NavbarLogin() {
                             <Nav.Link href="#Trend">Trend Untuk Anda</Nav.Link>
 
                         </Nav>
-
                         <Nav>
                             <Dropdown >
                                 <Dropdown.Toggle className={style.background} variant="light" >
@@ -39,8 +35,7 @@ export default function NavbarLogin() {
                                     <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
-
-                            <Nav.Link href="#deets">More
+                            <Nav.Link href="#deets"> More
                             </Nav.Link>
                             <Nav.Link eventKey={2} href="#memes">
                                 <Image src={gambar} width="30%">

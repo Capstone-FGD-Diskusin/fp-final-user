@@ -1,20 +1,21 @@
 import React from 'react'
-import { Button, Col, Container, Image, Row } from 'react-bootstrap'
-import style from "./ThereadLogin.module.css"
+import style from "./InputComment.module.css"
+import { useParams, Link } from 'react-router-dom'
+import { ThreadLoginData } from '../ThreadLogin/ThreadLoginData';
+import { Button, Col, Container, Image, Row, InputGroup, FormControl } from 'react-bootstrap'
 import * as FiIcons from 'react-icons/fi';
 import * as FaIcons from 'react-icons/fa';
 import * as BiIcons from 'react-icons/bi';
 import gambar from "../../img/Spiderman.png"
 import gambar2 from "../../img/love.png"
-import { ThreadLoginData } from './ThreadLoginData';
-import { Link } from 'react-router-dom';
+import gambar3 from "../../img/pesawat.png"
 
-export default function ThereadLogin() {
-
+export default function InputComment() {
+    const { id } = useParams();
     return (
-        <>
+        <div>
             <div className={style.space}>
-                {ThreadLoginData.map((item, index) => {
+                {ThreadLoginData?.filter(item => item.Id == id).map((item, index) => {
                     return (
                         <div key={index}>
                             <Container className={style.space7}>
@@ -59,12 +60,32 @@ export default function ThereadLogin() {
                                     <Col></Col>
                                     <Col><h6 className={style.kanan}>{item.Kategori}</h6></Col>
                                 </Row>
+
+                            </Container>
+
+                            <Container className={style.space7}>
+                                {/* <InputGroup>
+                                    <FormControl className={style.input} */}
+                                <Row className={style.box}>
+                                    <Col sm={1} className={style.space8}><BiIcons.BiCommentDetail /></Col>
+                                    <Col sm={9} className={style.space9}>
+
+                                        <h6 className={style.text1}><input variant="light" className={style.input} type="text" placeholder="Lorem Ipsum is simply dummy text of the printing and" /> </h6>
+                                    </Col>
+                                    <Col sm={2}>
+                                        <Button variant="" className={style.mid2} >
+                                            <Image src={gambar3} className={style.img} />
+                                        </Button>
+                                    </Col>
+                                </Row>
+
+                                {/* </InputGroup> */}
                             </Container>
 
                         </div>
                     )
                 })}
             </div>
-        </>
+        </div>
     )
 }

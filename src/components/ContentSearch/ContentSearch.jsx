@@ -5,7 +5,7 @@ import style from './ContentSearch.module.css'
 
 export default function ContentSearch() {
     return (
-        <div >
+        <div className={style.space3}>
             <div className={style.space}>
                 <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
                     <Col sm="10">

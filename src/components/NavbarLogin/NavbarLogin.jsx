@@ -43,8 +43,6 @@ export default function NavbarLogin() {
                         <div>
                             <FiIcons.FiBell size={20} />
 
-
-
                         </div>
                         <div>
 
@@ -54,16 +52,15 @@ export default function NavbarLogin() {
                                 title={<FiIcons.FiSettings size={20} />}
 
                             >
-                                <Dropdown.Item href="#">Action</Dropdown.Item>
-                                <Dropdown.Item href="#">Another action</Dropdown.Item>
-                                <Dropdown.Item href="#">Something else here</Dropdown.Item>
+                                <Dropdown.Item href="#">Settings</Dropdown.Item>
+                                <Dropdown.Item href="#">testing</Dropdown.Item>
                                 <Dropdown.Divider />
-                                <Dropdown.Item href="#">Separated link</Dropdown.Item>
+                                <Dropdown.Item href="#">Logout</Dropdown.Item>
                             </DropdownButton>
 
                         </div>
                         <div className={style.profile}>
-                            <FiIcons.FiUser size={20} />
+                            <Link to={`/CekLogin/HomeLogin/Profile`}><FiIcons.FiUser size={20} /></Link>
                         </div>
                     </div>
                 </div>
@@ -80,44 +77,6 @@ export default function NavbarLogin() {
                     })
                 }
             </div>
-            {/* <Navbar collapseOnSelect expand="lg" className={style.back} >
-                <Container>
-                    <Nav className="me-auto">
-                        <Navbar.Brand href="#home"> <b className={style.text2}>LOGO</b> </Navbar.Brand>
-                    </Nav>
-                    <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                    <Navbar.Collapse id="responsive-navbar-nav">
-                        <Nav className="me-auto">
-                        </Nav>
-                        <Nav className="me-auto">
-                            <Nav.Link href="#Beranda" className={style.spaceNav}>Beranda</Nav.Link>
-                            <Nav.Link href="#Mengikuti">Mengikuti</Nav.Link>
-                            <Nav.Link href="#Trend">Trend Untuk Anda</Nav.Link>
-
-                        </Nav>
-                        <Nav>
-                            <Dropdown >
-                                <Dropdown.Toggle className={style.background} variant="light" >
-                                    <Image src={gambar2} className={style.posisi} width="35%"></Image>
-                                </Dropdown.Toggle>
-
-                                <Dropdown.Menu >
-                                    <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                                    <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                                    <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-                                </Dropdown.Menu>
-                            </Dropdown>
-                            <Nav.Link href="#deets"> More
-                            </Nav.Link>
-                            <Nav.Link eventKey={2} href="#memes">
-                                <Image src={gambar} width="30%">
-
-                                </Image>
-                            </Nav.Link>
-                        </Nav>
-                    </Navbar.Collapse>
-                </Container>
-            </Navbar> */}
         </div >
     )
 }

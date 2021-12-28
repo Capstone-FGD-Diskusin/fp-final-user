@@ -11,7 +11,7 @@ export default function ContentHome() {
         <div>
             <Container>
                 <div>
-                    <div><h1>Nama Aplikasi</h1></div>
+                    <div><h1 className={style.h1}>Nama Aplikasi</h1></div>
                     <div>
                         <h6 className={style.tes}>Et has minim elitr intellegat.
                             Mea aeterno eleifend antiopam ad, nam no

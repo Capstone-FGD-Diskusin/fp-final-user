@@ -1,4 +1,4 @@
-/Login/HomeLoginimport gambar from "../../img/Spiderman.png"
+import gambar from "../../img/Spiderman.png"
 
 export const ThreadLoginData = [
     {
@@ -15,6 +15,28 @@ export const ThreadLoginData = [
     {
         Id   : 2,
         Name : "Faris",
+        path : "/2",
+        Image: "",
+        Comment: 
+        " Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's tandard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book",
+        like : 10,
+        comment : 10,
+        Kategori :"Lorem"
+    },
+    {
+        Id   : 3,
+        Name : "Noval Alamsyah",
+        path : "/2",
+        Image: "",
+        Comment: 
+        " Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's tandard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book",
+        like : 10,
+        comment : 10,
+        Kategori :"Lorem"
+    },
+    {
+        Id   : 4,
+        Name : "Noval Alamsyah",
         path : "/2",
         Image: "",
         Comment: 

@@ -4,21 +4,44 @@
     font-family: Poppins;
 }
 
+
 .box {
     border-radius: 5px;
     border: solid #FF8834;
-    position: relative;
-    display: flex;
-
+    margin-bottom: 15px;
 }
 
 .space {
     margin-top: 10px;
     margin-bottom: 10px;
+
 }
 
 .space2 {
     margin-top: 13px;
     margin-bottom: 10px;
     margin-left: 20px;
+}
+
+.space3 {
+    position: relative;
+    display: flex;
+
+}
+
+.space4 {
+    margin-bottom: 15px;
+}
+
+.butFol {
+    background-color: #FF8834;
+    color: white;
+    border-radius: 4px;
+    border: #FF8834;
+    /* text-align: right; */
+    align-content: center;
+    text-align: center;
+    align-items: center;
+    margin-top: 4px;
+    margin-bottom: 5px;
 }

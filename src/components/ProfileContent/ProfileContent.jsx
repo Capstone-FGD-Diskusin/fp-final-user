@@ -37,7 +37,7 @@ export default function ProfileContent() {
                             </Col>
                             <Col sm={4} className={style.row}>
                                 <h6 className={style.text}>10</h6>
-                                <Link to={``} className={style.text3}><h6 >Di Ikuti</h6></Link>
+                                <Link to={`/Login/HomeLogin/Pengikut`} className={style.text3}><h6 >Pengikut</h6></Link>
                                 <h6 className={style.text4}><BiIcons.BiCommentDetail />10</h6>
                                 <Link to={``} className={style.text3}><h6 >Diskusi</h6></Link>
                             </Col>

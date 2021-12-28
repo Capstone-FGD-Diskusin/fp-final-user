@@ -1,20 +1,21 @@
 import React from 'react'
 import { Button, Col, Container, Row } from 'react-bootstrap'
-import style from "./MengikutiContent.module.css"
+import style from "./PengikutContent.module.css"
 import * as FiIcons from 'react-icons/fi';
 import * as FaIcons from 'react-icons/fa';
-import { Mengikuti } from './Mengikuti';
+import { Pengikut } from './Pengikut';
 
-export default function MengikutiContent() {
+
+export default function PengikutContent() {
     return (
         <div>
 
             <Container>
                 <Row className={style.space4}>
-                    <h2 className={style.text}>Orang Yang Anda Ikuti</h2>
+                    <h2 className={style.text}>Orang Yang Mengikuti Anda</h2>
                 </Row>
                 {
-                    Mengikuti.map((item, index) => {
+                    Pengikut.map((item, index) => {
                         return (
                             <div key={index}>
                                 <Row className={style.box} >
@@ -24,7 +25,8 @@ export default function MengikutiContent() {
 
                                     </Col>
                                     <Col sm={3}>
-                                        <Button className={style.butFol}><h6 className={style.text2}>Mengikuti</h6></Button>
+                                        <Button className={style.butFol}><h6 className={style.text2}>Hapus</h6></Button>
+                                        <Button className={style.butFol}><h6 className={style.text2}>Ikuti Balik</h6></Button>
                                     </Col>
 
                                 </Row>

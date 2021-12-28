@@ -118,3 +118,7 @@ h6 input[type='text']:before {
     background-color: white;
     color: white;
 } */
+
+.box input:focus {
+    outline: none;
+}

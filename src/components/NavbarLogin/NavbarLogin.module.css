@@ -1,0 +1,170 @@
+.back {
+    background-color: white;
+    color: black;
+    /* box-shadow: 2px 1px grey; */
+    box-shadow: 0 2px 2px -1px rgba(0, 0, 0, .2);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-style: Bold;
+}
+
+.text {
+    color: black;
+}
+
+.text2 {
+    color: rgba(255, 136, 52, 1);
+
+}
+
+.spaceNav {
+    text-align: right;
+    padding-left: 100px;
+    /* margin-left: 250px; */
+}
+
+.background {
+    background-color: white;
+    border: white;
+    /* background-image: url("../../img/settings.png");
+    width: 100%; */
+
+
+}
+
+.link {
+    color: black;
+    text-decoration: none;
+
+}
+
+.link:hover {
+    color: rgba(255, 136, 52, 1);
+}
+
+.background:hover {
+    background-color: white;
+    border-color: white;
+}
+
+.background:visited {
+    background-color: white;
+    border-color: white;
+
+}
+
+.background:active {
+    background-color: white;
+    border-color: white;
+}
+
+.background:focus {
+    background-color: white;
+    border-color: white;
+}
+
+.posisi {
+    position: relative;
+    margin-right: -10px;
+    /* display: flex; */
+    align-items: center;
+    /* justify-content: center;
+    align-content: center; */
+    z-index: 12;
+}
+
+Dropdown-Toogle {
+    color: white;
+    background-color: white;
+}
+
+.navbar {
+    width: 100%;
+    height: 70px;
+    /* background: red; */
+    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+.content {
+    width: 80%;
+    height: 70px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background: aqua; */
+}
+
+.logo {
+    font-family: Lato;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 32px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.2px;
+    text-transform: uppercase;
+    color: #FF8834;
+}
+
+.middle {
+    display: flex;
+    gap: 2rem;
+}
+
+.right {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.profile {
+    width: 40px;
+    height: 40px;
+    border-radius: 100px;
+    background: #F4F5F4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bar {
+    display: none;
+}
+
+.dropdown {
+    display: none;
+}
+
+.dropdownActive {
+    width: 100%;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    background: #FFFFFF;
+    /* border: 1px solid; */
+}
+
+@media only screen and (max-width: 800px) {
+    .middle {
+        display: none;
+    }
+
+    .bar {
+        width: 50%;
+        /* background: red; */
+        display: flex;
+        justify-content: flex-end;
+
+    }
+}
+
+.down {
+    border-color: white;
+    color: white;
+    background-color: white;
+
+}

@@ -1,0 +1,35 @@
+.text1 {
+    padding-top: 120px;
+    color: rgba(255, 136, 52, 1);
+    text-align: center;
+}
+
+.text2 {
+    text-align: center;
+    padding-top: 10px;
+}
+
+.text3 {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.butGo {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: white;
+    background-color: rgba(55, 63, 65, 1);
+    border: rgba(55, 63, 65, 1);
+}
+
+.butKirim {
+    color: rgba(255, 136, 52, 1);
+    background-color: white;
+    border: white;
+}
+
+.butKirim:hover {
+    color: blue;
+    background-color: white;
+}

@@ -1,8 +1,9 @@
 import React from 'react'
-import { Col, Container, Row, Form, InputGroup, Button } from 'react-bootstrap'
+import { Col, Container, Row, Form, InputGroup, Button, Image } from 'react-bootstrap'
 import style from './Register.module.css'
 import { Link } from 'react-router-dom'
 import { useState } from "react";
+import gambar1 from "../../img/Register.jpg"
 
 export default function Regis() {
     const [validated, setValidated] = useState(false);
@@ -20,8 +21,8 @@ export default function Regis() {
         <div>
             <Container className={style.space}>
                 <Row>
-                    <Col sm={7}>
-                        asdas
+                    <Col sm={7} className={style.space1}>
+                        <Image src={gambar1} width="95%" />
                     </Col>
                     <Col sm={1}>
                     </Col>
@@ -104,9 +105,12 @@ export default function Regis() {
                                     feedbackType="invalid"
                                 />
                             </Form.Group>
-                            <Button type="submit" className={style.Butsub}>Daftar</Button>
-
-                            <h6>Sudah Punya Akun ? </h6><Link></Link>
+                            <div className="d-grid gap-2">
+                                <Button className={style.ButDaf} size="lg" type="submit">
+                                    DAFTAR
+                                </Button>
+                            </div>
+                            <div className={style.space2}><h6>Sudah Punya Akun? <Link to={`/Login`} className={style.text3}>Login Disini</Link></h6></div>
                         </Form>
                     </Col>
                 </Row>

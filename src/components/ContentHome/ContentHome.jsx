@@ -11,7 +11,7 @@ export default function ContentHome() {
         <div>
             <Container>
                 <div>
-                    <div><h1>Nama Aplikasi</h1></div>
+                    <div><h1 className={style.h1}>Nama Aplikasi</h1></div>
                     <div>
                         <h6 className={style.tes}>Et has minim elitr intellegat.
                             Mea aeterno eleifend antiopam ad, nam no
@@ -32,7 +32,7 @@ export default function ContentHome() {
                                 <Col sm={8} >
                                     <div className={style.imgg}><Image src={gambar} /></div>
                                     {/* <br />
-                                    <h1>sadas</h1> */}
+                        https://meet.google.com/ige-osdr-gcc            <h1>sadas</h1> */}
                                 </Col>
                                 <Col sm={2}></Col>
                             </Row>

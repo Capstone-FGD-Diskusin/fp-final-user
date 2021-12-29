@@ -8,14 +8,8 @@ import gambar2 from "../../img/facebook.png"
 import gambar3 from "../../img/login.png"
 import Footer from '../Footer/Footer';
 
-const dataLogin = {
-    username: "",
-    password: "",
-};
-
 export default function LoginContent() {
     const [validated, setValidated] = useState(false);
-
 
     const handleSubmit = (event) => {
         const form = event.currentTarget;

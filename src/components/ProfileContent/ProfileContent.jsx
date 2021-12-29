@@ -33,11 +33,11 @@ export default function ProfileContent() {
 
                             <Col sm={2} className={style.row}>
                                 <h6 className={style.text2}>10</h6>
-                                <Link to={`/Login/HomeLogin/Profile/Mengikuti`} className={style.text3}><h6>Mengikuti</h6></Link>
+                                <Link to={`/Login/HomeLogin/Mengikuti`} className={style.text3}><h6>Mengikuti</h6></Link>
                             </Col>
                             <Col sm={4} className={style.row}>
                                 <h6 className={style.text}>10</h6>
-                                <Link to={`/Login/HomeLogin/Profile/Pengikut`} className={style.text3}><h6 >Pengikut</h6></Link>
+                                <Link to={`/Login/HomeLogin/Pengikut`} className={style.text3}><h6 >Pengikut</h6></Link>
                                 <h6 className={style.text4}><BiIcons.BiCommentDetail />10</h6>
                                 <Link to={``} className={style.text3}><h6 >Diskusi</h6></Link>
                             </Col>

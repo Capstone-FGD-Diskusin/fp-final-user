@@ -8,7 +8,7 @@ export const NavbarLoginData = [
         path: ""
     },
     {
-        title: "Peringkat Diskusi",
-        path: "/Login/HomeLogin/Peringkat"
+        title: "Tren Untuk Anda",
+        path: "/contact_us"
     }, 
 ]

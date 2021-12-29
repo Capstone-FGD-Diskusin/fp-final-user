@@ -1,0 +1,66 @@
+.text {
+    margin-top: 50px;
+    font-weight: bold;
+    font-family: Poppins;
+}
+
+.text2 {
+    color: #FF8834;
+    margin-top: 10px;
+}
+
+.text3 {
+
+    margin-top: 10px;
+}
+
+.box {
+    border-radius: 5px;
+    border: solid #FF8834;
+    margin-bottom: 15px;
+}
+
+.space {
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+
+.space2 {
+    margin-top: 13px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+}
+
+.space3 {
+    position: relative;
+    display: flex;
+
+}
+
+.space4 {
+    margin-bottom: 15px;
+}
+
+.space5 {
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.space6 {
+    margin-top: 12px;
+    margin-right: 10px;
+}
+
+.butFol {
+    background-color: #FF8834;
+    color: white;
+    border-radius: 4px;
+    border: #FF8834;
+    /* text-align: right; */
+    align-content: center;
+    text-align: center;
+    align-items: center;
+    margin-top: 4px;
+    margin-bottom: 5px;
+}

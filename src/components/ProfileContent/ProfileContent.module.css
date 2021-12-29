@@ -1,0 +1,51 @@
+.profile {
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+    background: #F4F5F4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.space {
+    margin-top: 150px;
+}
+
+.space2 {
+    margin-top: 40px;
+}
+
+.row {
+    display: flex;
+    position: relative;
+}
+
+.text {
+    margin-top: 5px;
+    margin-left: 10px
+}
+
+.text2 {
+    margin-top: 5px;
+    margin-left: 10px;
+    padding-left: 10px;
+}
+
+.text3 {
+    margin-top: 5px;
+    margin-left: 3px;
+    text-decoration: none;
+    color: black;
+}
+
+.text3:hover {
+    color: #FF8834;
+}
+
+.text4 {
+    /* padding-right: -10px;
+    margin-right: -10px; */
+    margin-top: 5px;
+    margin-left: 20px
+}

@@ -15,6 +15,12 @@ const dataLogin = {
 
 export default function LoginContent() {
     const [validated, setValidated] = useState(false);
+    const [data, setData] = useState(dataLogin)
+
+    const handleChange = (event) => {
+        setData(event.target.value);
+
+    }
 
 
     const handleSubmit = (event) => {
@@ -24,8 +30,10 @@ export default function LoginContent() {
             event.stopPropagation();
         }
         setValidated(true);
+        console.log(data, "ini submit");
     }
     return (
+
         <div>
             <Container className={style.space}>
                 <Row>
@@ -41,6 +49,8 @@ export default function LoginContent() {
                             <Row className="mb-3">
                                 <Form.Group controlId="validationCustom01">
                                     <Form.Control
+                                        onChange={handleChange}
+                                        value={data.username}
                                         required
                                         type="text"
                                         placeholder="Username"
@@ -55,6 +65,8 @@ export default function LoginContent() {
                                 <Form.Group controlId="validationCustom02">
                                     <Form.Control
                                         required
+                                        onChange={handleChange}
+                                        value={data.password}
                                         type="password"
                                         placeholder="Password"
                                     />
@@ -72,7 +84,7 @@ export default function LoginContent() {
                         <div className={style.space2}><h6>Lupa Kata Sandi? <Link to={`/CekLogin`} className={style.text3}>Klik Disini</Link></h6></div>
                         <div className={style.mid}><h6 className={style.space3}>----------------Atau Masuk Dengan----------------</h6></div>
                         <div className="d-grid gap-2">
-                            <Button className={style.butGo} size="lg">
+                            <Button className={style.butGo} size="lg" onSubmit={handleSubmit}>
                                 <Image src={gambar} width="8%" className={style.google} /> Google
                             </Button>
                         </div> <br />

@@ -17,35 +17,26 @@ export default function OpenDiscuss() {
                     <Container>
                         <Row className={style.add}>
                             <Col>
-                                <h6 className={style.text}>Ayo Buka Diskusi </h6>
-
+                                <textarea className={style.input} placeholder="Ayo Buka Diskusi..."></textarea>
                             </Col>
                             <Col></Col>
                             <Col className={style.kanan}>
-                                <MyVerticallyCenteredModal />
-
+                                <MyVerticallyCenteredModal width="5px" />
                             </Col>
                         </Row>
-                        <Row className={style.space2}>
-                            <Col sm={7}></Col>
-                            <Col sm={1}>
-                                <div>
-                                    <h5>#Tag  </h5>
 
-                                </div>
-
-                            </Col>
-                            <Col sm={1}>
-                                <Image src={gambar} width="150%" className={style.mid} />
-                            </Col>
-                            <Col sm={3} >
+                        <Row >
+                            <Col className={style.unggah}>
+                                <h6 >as</h6>
+                                <Image src={gambar} width="35px" height="35px" className={style.mid} />
                                 <Button className={style.text2}>
-                                    <h5>
-                                        <Image src={gambar2} width="20%" className={style.unduh} />Unggah
-                                    </h5>
-                                </Button>
+                                    <h6>
+                                        <Image src={gambar2} width="15%" className={style.unduh} /> Upload
 
+                                    </h6>
+                                </Button>
                             </Col>
+
                         </Row>
                     </Container>
                 </div>

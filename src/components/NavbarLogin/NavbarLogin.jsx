@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { InputGroup, DropdownButton, Dropdown, FormControl } from 'react-bootstrap';
+import { InputGroup, DropdownButton, Dropdown, FormControl, Image } from 'react-bootstrap';
 import style from './NavbarLogin.module.css'
 // import { Container, Navbar, Nav, NavDropdown, Image, Button, ImageDropdown, Dropdown } from 'react-bootstrap'
 // import gambar from "../../img/profile.png"
@@ -9,6 +9,7 @@ import { NavbarLoginData } from './NavbarLoginData';
 import * as FiIcons from 'react-icons/fi';
 import * as FaIcons from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import gambar from "../../img/logoDiskusiin.png"
 
 export default function NavbarLogin() {
     const [isDown, setIsDown] = useState(false);
@@ -21,7 +22,7 @@ export default function NavbarLogin() {
             <div className={style.navbar}>
                 <div className={style.content}>
                     <div className={style.logo}>
-                        LOGO
+                        <Link to={`/Login/HomeLogin`}><Image src={gambar} width="60px" /></Link>
                     </div>
                     <div className={style.middle}>
                         {

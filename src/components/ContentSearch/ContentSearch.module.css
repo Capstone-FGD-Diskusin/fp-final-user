@@ -5,6 +5,7 @@
 
 .box {
     border-bottom: 1px solid;
+    color: rgba(255, 136, 52, 1);
 }
 
 .text {
@@ -52,4 +53,12 @@ input[type=text] {
     color: rgba(255, 136, 52, 1);
     background-color: rgba(255, 136, 52, 1);
     ;
+} */
+
+/* .input {
+    border: rgba(255, 136, 52, 1);
+}
+
+.input:focus {
+    outline: none;
 } */

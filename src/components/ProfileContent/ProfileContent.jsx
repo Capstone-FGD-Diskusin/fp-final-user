@@ -25,26 +25,27 @@ export default function ProfileContent() {
                         <Row>
                             <Col><h1 className={style.space2}>Noval Alamsyah</h1></Col>
                         </Row>
-                        <Row >
-                            <Col className={style.row} sm={1}>
-                                <Image src={gambar} width="100%" />
-                                <h6 className={style.text}>10</h6>
-                            </Col>
 
-                            <Col sm={2} className={style.row}>
+                        <Row>
+                            <Col className={style.bag}>
+                                <Image src={gambar} width="25px" height="25px" className={style.img} />
+                                <h6 className={style.text}>10</h6>
+
                                 <h6 className={style.text2}>10</h6>
-                                <Link to={`/Login/HomeLogin/Profile/Mengikuti`} className={style.text3}><h6>Mengikuti</h6></Link>
-                            </Col>
-                            <Col sm={4} className={style.row}>
-                                <h6 className={style.text}>10</h6>
-                                <Link to={`/Login/HomeLogin/Profile/Pengikut`} className={style.text3}><h6 >Pengikut</h6></Link>
-                                <h6 className={style.text4}><BiIcons.BiCommentDetail />10</h6>
-                                <Link to={``} className={style.text3}><h6 >Diskusi</h6></Link>
-                            </Col>
-                            {/* <Col sm={2} className={style.row}> */}
+                                <Link to={`/Login/HomeLogin/Profile/Mengikuti`} className={style.text3}>
+                                    <h6>Mengikuti</h6>
+                                </Link>
 
-                            {/* </Col> */}
-                            <Col sm={4}></Col>
+                                <h6 className={style.text2}>10</h6>
+                                <Link to={`/Login/HomeLogin/Profile/Pengikut`} className={style.text3}><h6 >Pengikut</h6></Link>
+                                <h6 className={style.text4}>
+                                    <BiIcons.BiCommentDetail size={20} className={style.space5} />
+                                    10
+                                </h6>
+                                <Link to={``} className={style.text3}>
+                                    <h6>Diskusi</h6>
+                                </Link>
+                            </Col>
                         </Row>
                     </Col>
                 </Row>
@@ -52,21 +53,6 @@ export default function ProfileContent() {
                 </Row>
             </Container >
             <ThreadProfile />
-
-
-            {/* {
-                ThreadLoginData.filter(item => item.Name == "Noval Alamsyah").map((item, index) => {
-                    return (
-                        <div>
-                            <ThereadLogin data={item.Name == "Noval Alamsyah"} />
-                        </div>
-                    )
-                })
-            } */}
-
-
-
-
         </div >
     )
 }

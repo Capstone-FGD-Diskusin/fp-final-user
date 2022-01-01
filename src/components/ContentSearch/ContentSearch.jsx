@@ -9,7 +9,7 @@ export default function ContentSearch() {
             <div className={style.space}>
                 <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
                     <Col sm="10">
-                        <Form.Control type="text" placeholder="Search" />
+                        <Form.Control type="text" placeholder="Search" className={style.input} />
                     </Col>
                 </Form.Group>
             </div>

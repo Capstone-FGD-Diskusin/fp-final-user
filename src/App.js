@@ -10,12 +10,19 @@ import Mengikuti from "./pages/Mengikuti/Mengikuti";
 import Profile from "./pages/Profile/Profile";
 import Pengikut from "./pages/Pengikut/Pengikut";
 import Peringkat from "./pages/Peringkat/Peringkat";
+
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/lib/integration/react';
+import { persistor, store } from "./store/store";
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
+
+      <Provider store={store}>
+        <PersistGate persistor={persistor}>
+        <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomeDefault/>}/>
           <Route path="/Login" element={<Login/>}/>
@@ -29,7 +36,9 @@ function App() {
           {/* <Route path="/Login/HomeLogin/Trend" element={<HomeLogin/>}/> */}
           <Route path="/Login/HomeLogin/:id/Comment" element={<Comment/>}/>
         </Routes>
-      </BrowserRouter>
+        </BrowserRouter>
+        </PersistGate>
+      </Provider>
     </div>
   );
 }

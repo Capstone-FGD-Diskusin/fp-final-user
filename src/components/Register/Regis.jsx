@@ -4,6 +4,7 @@ import style from './Register.module.css'
 import { Link } from 'react-router-dom'
 import { useState } from "react";
 import gambar1 from "../../img/Register.jpg"
+import gambar4 from "../../img/logoDiskusiin.png"
 
 export default function Regis() {
     const [validated, setValidated] = useState(false);
@@ -27,7 +28,7 @@ export default function Regis() {
                     <Col sm={1}>
                     </Col>
                     <Col sm={4}>
-                        <h3 className={style.text1}>Logo</h3>
+                        <h3 className={style.text1}><Image src={gambar4} width="25%" /></h3>
                         <h4 className={style.text2}>Register</h4>
 
                         <Form noValidate validated={validated} onSubmit={handleSubmit}>

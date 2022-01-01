@@ -43,21 +43,19 @@ export default function ThereadLogin() {
                                         </Row>
                                     </div>
                                 </Row>
-                                <Row>
-                                    <Col className={style.posisi}>
-                                        <h6>
-                                            <Image src={gambar2} width="40%" classname={style.space6} />
-                                            {item.like}
-                                        </h6>
-                                        <h6>
-                                            <Link to={`/Login/HomeLogin/${item.Id}/Comment`}><BiIcons.BiCommentDetail /></Link>
-                                            {item.comment}
-                                        </h6>
-                                        <FiIcons.FiShare2 />
+                                <Row >
+                                    <Col className={style.bag}>
+                                        <div className={style.det}>
 
+                                            <Image src={gambar2} width="20px" height="20px" />
+                                            <h6 className={style.space8}>{item.like}</h6>
+                                            <Link to={`/Login/HomeLogin/${item.Id}/Comment`} className={style.space9}><BiIcons.BiCommentDetail size={20} className={style.space10} /></Link>
+                                            <h6 className={style.space8}>{item.comment}</h6>
+                                            <FiIcons.FiShare2 className={style.space11} />
+
+                                        </div>
+                                        <Link to={``} className={style.text}><h6 >{item.Kategori}</h6></Link>
                                     </Col>
-                                    <Col></Col>
-                                    <Col><h6 className={style.kanan}>{item.Kategori}</h6></Col>
                                 </Row>
                             </Container>
 

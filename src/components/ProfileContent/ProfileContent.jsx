@@ -6,8 +6,8 @@ import * as FaIcons from 'react-icons/fa';
 import * as BiIcons from 'react-icons/bi';
 import gambar from "../../img/bintang.png"
 import { Link } from 'react-router-dom';
-import { ThreadLoginData } from '../ThreadLogin/ThreadLoginData';
-import ThereadLogin from '../ThreadLogin/ThereadLogin';
+import { ThreadLoginData } from '../Thread/ThreadLoginData';
+import ThereadLogin from '../Thread/ThereadLogin';
 import ThereadProfile from './ThreadProfile';
 import ThreadProfile from './ThreadProfile';
 

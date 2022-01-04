@@ -30,20 +30,17 @@ export default function LoginContent() {
     const dispatch = useDispatch()
 
     const handleSubmit = (event) => {
-        console.log(data);
-        // const form = event.currentTarget;
+        // console.log(data);
+        const form = event.currentTarget;
+        if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+        setValidated(true);
         dispatch(setUsername(data.username))
         dispatch(setPassword(data.password))
 
-        // if (form.checkValidity() === false) {
-        //     event.preventDefault();
-        //     event.stopPropagation();
-
-        // }
-
-
-        // setValidated(true);
-        console.log(data, "ini submit");
+        // console.log(data, "ini submit");
     }
     return (
 

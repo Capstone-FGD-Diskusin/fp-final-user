@@ -8,7 +8,7 @@ import gambar from "../../img/Spiderman.png"
 import gambar2 from "../../img/love.png"
 
 import { Link } from 'react-router-dom';
-import { ThreadLoginData } from '../ThreadLogin/ThreadLoginData';
+import { ThreadLoginData } from '../Thread/ThreadLoginData';
 
 export default function ThreadProfile() {
 
@@ -55,7 +55,7 @@ export default function ThreadProfile() {
                                             <FiIcons.FiShare2 className={style.space11} />
 
                                         </div>
-                                        <Link to={``} className={style.text}><h6 >{item.Kategori}</h6></Link>
+                                        <Link to={`/Login/HomeLogin/${item.Kategori}`} className={style.text}><h6 >{item.Kategori}</h6></Link>
                                     </Col>
                                 </Row>
                             </Container>

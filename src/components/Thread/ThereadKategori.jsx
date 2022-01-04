@@ -1,21 +1,21 @@
 import React from 'react'
-import style from "./InputComment.module.css"
-import { useParams, Link } from 'react-router-dom'
-import { ThreadLoginData } from '../Thread/ThreadLoginData';
-import { Button, Col, Container, Image, Row, InputGroup, FormControl } from 'react-bootstrap'
+import { Button, Col, Container, Image, Row } from 'react-bootstrap'
+import style from "./ThereadLogin.module.css"
 import * as FiIcons from 'react-icons/fi';
 import * as FaIcons from 'react-icons/fa';
 import * as BiIcons from 'react-icons/bi';
 import gambar from "../../img/Spiderman.png"
 import gambar2 from "../../img/love.png"
-import gambar3 from "../../img/pesawat.png"
+import { ThreadLoginData } from './ThreadLoginData';
+import { Link, useParams } from 'react-router-dom';
 
-export default function InputComment() {
+export default function ThereadKategori() {
     const { id } = useParams();
+
     return (
-        <div>
+        <>
             <div className={style.space}>
-                {ThreadLoginData?.filter(item => item.Id == id).map((item, index) => {
+                {ThreadLoginData.filter(item => item.Kategori == id).map((item, index) => {
                     return (
                         <div key={index}>
                             <Container className={style.space7}>
@@ -60,25 +60,10 @@ export default function InputComment() {
                                 </Row>
                             </Container>
 
-                            <Container className={style.space7}>
-                                <Row className={style.box}>
-                                    <Col sm={1} className={style.space12}><BiIcons.BiCommentDetail /></Col>
-                                    <Col sm={9} className={style.space13}>
-
-                                        <h6 className={style.text1}><input variant="light" className={style.input} type="text" placeholder="Lorem Ipsum is simply dummy text of the printing and" /> </h6>
-                                    </Col>
-                                    <Col sm={2}>
-                                        <Button variant="" className={style.mid2} >
-                                            <Image src={gambar3} className={style.img} />
-                                        </Button>
-                                    </Col>
-                                </Row>
-                            </Container>
-
                         </div>
                     )
                 })}
             </div>
-        </div>
+        </>
     )
 }

@@ -6,6 +6,7 @@
 .box {
     border-bottom: 1px solid;
     color: rgba(255, 136, 52, 1);
+    margin-bottom: 10px;
 }
 
 .text {

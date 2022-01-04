@@ -30,9 +30,9 @@ export default function OpenDiscuss() {
                                 <h6 >as</h6>
                                 <Image src={gambar} width="35px" height="35px" className={style.mid} />
                                 <Button className={style.text2}>
-                                    <h6>
-                                        <Image src={gambar2} width="15%" className={style.unduh} /> Upload
-
+                                    <h6 className={style.posisi}>
+                                        <Image src={gambar2} width="15px" height="15px" className={style.unduh} />
+                                        Upload
                                     </h6>
                                 </Button>
                             </Col>

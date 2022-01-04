@@ -3,11 +3,37 @@ import { Col, Container, Row, Form, InputGroup, Button, Image } from 'react-boot
 import style from './Register.module.css'
 import { Link } from 'react-router-dom'
 import { useState } from "react";
+import { useDispatch } from 'react-redux';
 import gambar1 from "../../img/Register.jpg"
 import gambar4 from "../../img/logoDiskusiin.png"
+import {
+    setUsernameRegis,
+    setAddressRegis,
+    setEmailRegis,
+    setFileRegis,
+    setPhoneRegis,
+    setPasswordRegis
+} from '../../store/slice';
+
+const dataRegis = {
+    fileRegis: "",
+    usernameRegis: "",
+    passwordRegis: "",
+    emailRegis: "",
+    addressRegis: "",
+    phoneRegis: "",
+};
 
 export default function Regis() {
     const [validated, setValidated] = useState(false);
+    const [data, setData] = useState(dataRegis)
+
+    const handleChange = (event) => {
+        setData({ ...data, [event.target.name]: event.target.value });
+        console.log(data.usernameRegis);
+    }
+
+    const dispatch = useDispatch()
 
     const handleSubmit = (event) => {
         const form = event.currentTarget;
@@ -15,8 +41,15 @@ export default function Regis() {
             event.preventDefault();
             event.stopPropagation();
         }
-
         setValidated(true);
+        dispatch(setFileRegis(data.fileRegis))
+        dispatch(setUsernameRegis(data.usernameRegis))
+        // dispatch(setPasswordRe(data.passwordRegis))
+        dispatch(setPasswordRegis(data.passwordRegis))
+        dispatch(setEmailRegis(data.emailRegis))
+        // dispatch(setPasswordRe(data.passwordRegis))
+        dispatch(setAddressRegis(data.addressRegis))
+        dispatch(setPhoneRegis(data.phoneRegis))
     };
     return (
         <div>
@@ -34,16 +67,24 @@ export default function Regis() {
                         <Form noValidate validated={validated} onSubmit={handleSubmit}>
                             <Row className="mb-3">
                                 <Form.Group controlId="validationCustom06">
-                                    <Form.Control type="file" placeholder="Zip" required />
+                                    <Form.Control
+                                        onChange={handleChange}
+                                        value={data.fileRegis}
+                                        name="fileRegis"
+                                        type="file"
+                                        placeholder="Zip"
+                                        required />
                                     <Form.Control.Feedback type="invalid">
                                         Please input Photo Profile.
                                     </Form.Control.Feedback>
                                 </Form.Group> <br />
                             </Row>
-
                             <Row className="mb-3">
                                 <Form.Group controlId="validationCustom01">
                                     <Form.Control
+                                        onChange={handleChange}
+                                        value={data.usernameRegis}
+                                        name="usernameRegis"
                                         required
                                         type="text"
                                         placeholder="Username"
@@ -57,6 +98,9 @@ export default function Regis() {
                             <Row className="mb-3">
                                 <Form.Group controlId="validationCustom02">
                                     <Form.Control
+                                        onChange={handleChange}
+                                        value={data.passwordRegis}
+                                        name="passwordRegis"
                                         required
                                         type="password"
                                         placeholder="Password"
@@ -71,6 +115,9 @@ export default function Regis() {
                                 <Form.Group controlId="validationCustomUsername">
                                     <InputGroup hasValidation>
                                         <Form.Control
+                                            onChange={handleChange}
+                                            value={data.emailRegis}
+                                            name="emailRegis"
                                             type="text"
                                             placeholder="Email"
                                             aria-describedby="inputGroupPrepend"
@@ -84,7 +131,14 @@ export default function Regis() {
                             </Row>
                             <Row className="mb-3">
                                 <Form.Group controlId="validationCustom03">
-                                    <Form.Control type="text" placeholder="Address" required />
+                                    <Form.Control
+                                        onChange={handleChange}
+                                        value={data.addressRegis}
+                                        name="addressRegis"
+                                        type="text"
+                                        placeholder="Address"
+                                        required
+                                    />
                                     <Form.Control.Feedback type="invalid">
                                         Address is Required
                                     </Form.Control.Feedback>
@@ -92,7 +146,14 @@ export default function Regis() {
                             </Row>
                             <Row className="mb-3">
                                 <Form.Group controlId="validationCustom04">
-                                    <Form.Control type="number" placeholder="Phone" required />
+                                    <Form.Control
+                                        onChange={handleChange}
+                                        value={data.phoneRegis}
+                                        name="phoneRegis"
+                                        type="number"
+                                        placeholder="Phone"
+                                        required
+                                    />
                                     <Form.Control.Feedback type="invalid">
                                         Phone Number is Required
                                     </Form.Control.Feedback>
@@ -107,7 +168,7 @@ export default function Regis() {
                                 />
                             </Form.Group>
                             <div className="d-grid gap-2">
-                                <Button className={style.ButDaf} size="lg" type="submit">
+                                <Button className={style.ButDaf} size="lg" onClick={handleSubmit}>
                                     DAFTAR
                                 </Button>
                             </div>

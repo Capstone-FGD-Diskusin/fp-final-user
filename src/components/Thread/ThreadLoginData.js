@@ -10,7 +10,7 @@ export const ThreadLoginData = [
         " Gan FIlm Spiderman No Way Home bisa di katakan Terbaik kah dari FIlm Film versi SONY ataupun Disney ? Soalnya Para Kritukus Nge Rating Film ini 100% di hari Primer dia Nonton",
         like : 20,
         comment : 30,
-        Kategori :"Film",
+        Kategori :"Hiburan",
     },
     {
         Id   : 2,
@@ -21,7 +21,7 @@ export const ThreadLoginData = [
         " Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's tandard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book",
         like : 10,
         comment : 10,
-        Kategori :"Lorem"
+        Kategori :"Politik"
     },
     {
         Id   : 3,
@@ -32,7 +32,7 @@ export const ThreadLoginData = [
         " Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's tandard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book",
         like : 10,
         comment : 10,
-        Kategori :"Lorem"
+        Kategori :"Politik"
     },
     {
         Id   : 4,
@@ -43,6 +43,6 @@ export const ThreadLoginData = [
         " Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's tandard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book",
         like : 10,
         comment : 10,
-        Kategori :"Lorem"
+        Kategori :"GayaHidup"
     },
 ]

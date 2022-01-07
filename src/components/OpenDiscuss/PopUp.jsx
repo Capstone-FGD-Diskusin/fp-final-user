@@ -13,7 +13,7 @@ export default function MyVerticallyCenteredModal(props) {
     return (
         <>
             <Button variant="" onClick={handleShow} className={style.butin}>
-                <Image src={gambar} />
+                <h6>Kategori</h6>
             </Button>
 
             <Modal show={show} onHide={handleClose} animation={false}

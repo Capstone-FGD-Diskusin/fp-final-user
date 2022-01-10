@@ -15,15 +15,16 @@ export default function OpenDiscuss() {
     const dataThread = {
         thread: "",
         img: "",
-        tag: "",
         kategori: "",
-        tag: "",
     }
 
-    const [data, setData] = useState()
+    const [data, setData] = useState(dataThread)
 
     const handleChange = (event) => {
+        console.log("string");
         setData({ ...data, [event.target.name]: event.target.value })
+        console.log("event name", event.target.name);
+        console.log("event target", event.target.value);
     }
 
     const handleSubmit = (event) => {
@@ -37,6 +38,9 @@ export default function OpenDiscuss() {
                     <Container>
                         <Form>
                             <Form.Control
+                                name="thread"
+                                value={data.thread}
+                                onChange={handleChange}
                                 className={style.thread}
                                 as="textarea"
                                 label="Ayo Buka Diskusi..."
@@ -49,7 +53,11 @@ export default function OpenDiscuss() {
                                     {/* <h6 ><MyVerticallyCenteredModal width="5px" /></h6> */}
                                     {/* <Image src={gambar} width="35px" height="35px" /> */}
 
-                                    <Form.Select className={style.texts}>
+                                    <Form.Select className={style.texts}
+                                        onChange={handleChange}
+                                        name="kategori"
+                                        value={data.kategori}
+                                    >
                                         <option>Kategori</option>
                                         <option value="1">Hiburan</option>
                                         <option value="2">Politik</option>
@@ -57,6 +65,7 @@ export default function OpenDiscuss() {
                                         <option value="4">Kesehatan mental</option>
                                         <option value="5">Olahraga</option>
                                         <option value="6">Game</option>
+
 
                                     </Form.Select>
                                     {/* <Image src={gambar} width="35px" height="35px" /> */}
@@ -73,7 +82,8 @@ export default function OpenDiscuss() {
                                             className={style.img}
                                             type="file"
                                             required
-                                            name="file"
+                                            name="img"
+                                            value={data.img}
                                             onChange={handleChange}
                                         // isInvalid={!!errors.file}
                                         />

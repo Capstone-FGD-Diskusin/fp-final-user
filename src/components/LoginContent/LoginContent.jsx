@@ -13,7 +13,7 @@ import Footer from '../Footer/Footer';
 import Axios from 'axios';
 import swal from 'sweetalert';
 
-import { setPassword, setUsername } from '../../store/slice';
+import { setPassword, setUsername, setToken } from '../../store/slice';
 
 const dataLogin = {
     username: "",
@@ -37,7 +37,7 @@ export default function LoginContent() {
     const handleSubmit = async (e) => {
         console.log(data);
         let isTrue = false;
-        const URL = `http:34.101.171.217:1234/user/login`
+        const URL = `http://34.101.171.217:1234/user/login`
         await Axios.post(URL,
             {
                 email: data.username,
@@ -45,12 +45,12 @@ export default function LoginContent() {
             })
             .then(res => {
                 console.log(res);
-                // console.log(res.data.data.token);
-                // dispatch(login(res.data.data.token));
-                // if (res.data["data"].token) {
-                //     console.log("berhasil")
-                //     isTrue = true;
-                // }
+                console.log(res.data.token);
+                dispatch(setToken(res.data.token));
+                if (res.data.token) {
+                    console.log("berhasil")
+                    isTrue = true;
+                }
             }).catch(error => {
                 // this.setError()
                 console.log(error)
@@ -79,7 +79,7 @@ export default function LoginContent() {
         if (isTrue) {
             console.log()
             // dispatch(login(res))
-            history("/home");
+            history("/Login/HomeLogin");
             swal({
                 title: "Success",
                 text: "Login Berhasil",

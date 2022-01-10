@@ -2,6 +2,11 @@ export const SearchKategori = [
     {
         Kategori : "Hiburan",
         path : "/Hiburan",
+        Moderator :
+        [
+            "Bagus",
+            "Noval"
+        ]
     },
     {
         Kategori : "Politik",

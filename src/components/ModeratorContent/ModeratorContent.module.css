@@ -1,0 +1,25 @@
+.kanan {
+    text-align: right;
+}
+
+.space {
+    margin-top: 75px;
+}
+
+.space2 {
+    margin-top: 10px;
+}
+
+.box2 {
+    text-decoration: none;
+    color: black;
+}
+
+.box2:hover {
+    color: rgba(255, 136, 52, 1);
+    ;
+}
+
+.space3 {
+    margin-top: 50px;
+}

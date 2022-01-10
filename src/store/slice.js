@@ -8,6 +8,7 @@ const passwordRegis = ""
 const emailRegis = ""
 const addressRegis =""
 const phoneRegis = ""
+const token =""
 
 export const slice =  createSlice({
     name : "dataUser",
@@ -19,7 +20,8 @@ export const slice =  createSlice({
         passwordRegis : passwordRegis,
         emailRegis : emailRegis,
         addressRegis : addressRegis,
-        phoneRegis : phoneRegis
+        phoneRegis : phoneRegis,
+        token : token,
     },
 
     reducers:{
@@ -50,11 +52,16 @@ export const slice =  createSlice({
         },
         setPhoneRegis : (state, action) => {
             state.phoneRegis = action.payload
-        }
+        },
+        setToken : (state,action) => {
+            console.log("dalem reducers setToken",action.payload);
+            state.token=action.payload
+        },
     }
 })
 
 export const {
+    setToken,
     setUsername, 
     setPassword, 
     setFileRegis, 

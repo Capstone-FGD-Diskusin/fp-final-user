@@ -45,10 +45,10 @@
     font-style: Bold;
 }
 
-input[type=text] {
+/* input[type=text] {
     border: 2px solid rgba(255, 136, 52, 1);
     border-radius: 4px;
-}
+} */
 
 /* input[type=text]:active {
     color: rgba(255, 136, 52, 1);
@@ -63,3 +63,7 @@ input[type=text] {
 .input:focus {
     outline: none;
 } */
+
+.input {
+    border-color: rgba(255, 136, 52, 1);
+}

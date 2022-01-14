@@ -1,5 +1,6 @@
 import React from 'react'
 import { Col, Container, Row } from 'react-bootstrap'
+import ModeratorContent from '../../components/ModeratorContent/ModeratorContent'
 import NavbarLogin from '../../components/NavbarLogin/NavbarLogin'
 import SearchContent from '../../components/SearchContent/SearchContent'
 import ThereadKategori from '../../components/Thread/ThereadKategori'
@@ -16,7 +17,7 @@ export default function Kategori() {
                     <Col sm={6}>
                         <ThereadKategori />
                     </Col>
-                    <Col sm={3}><TrendingContent /></Col>
+                    <Col sm={3}><ModeratorContent /></Col>
                 </Row>
             </Container>
 

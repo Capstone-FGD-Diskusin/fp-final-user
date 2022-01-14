@@ -2,33 +2,6 @@
     margin-top: 60px;
 }
 
-.space2 {
-    margin-top: 15px;
-}
-
-.space3 {
-    padding-top: 10px;
-}
-
-
-.add {
-    border: 2px solid rgba(255, 136, 52, 1);
-    border-radius: 10px;
-
-}
-
-.input:focus {
-    outline: none;
-}
-
-.input {
-    margin-top: 10px;
-    border: white;
-    width: auto;
-    height: 100px;
-    font-family: robotto;
-}
-
 .text2 {
     background-color: rgba(255, 136, 52, 1);
     color: white;
@@ -42,15 +15,6 @@
     border-color: rgba(255, 136, 52, 1);
 }
 
-.kanan {
-    align-content: right;
-    text-align: right;
-
-}
-
-.mid {
-    margin-left: 0px;
-}
 
 .butin {
     background-color: white;
@@ -68,10 +32,6 @@
     margin-top: 2px;
 }
 
-/* .butin: {
-    background-color: white;
-} */
-
 .unggah {
     margin-top: 10px;
     display: flex;
@@ -79,10 +39,27 @@
     gap: 1rem;
 }
 
-.text4 {
-    display: flex;
-}
-
 .posisi {
     display: flex;
+    padding-bottom: -10px;
+}
+
+.texts {
+    border-color: rgba(255, 136, 52, 1);
+    color: black;
+}
+
+.texts:focus {
+    outline: none;
+}
+
+.thread {
+    border-color: rgba(255, 136, 52, 1);
+    height: 150px;
+
+}
+
+
+.image input {
+    display: none;
 }

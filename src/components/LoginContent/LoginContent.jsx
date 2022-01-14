@@ -37,7 +37,7 @@ export default function LoginContent() {
     const handleSubmit = async (e) => {
         console.log(data);
         let isTrue = false;
-        const URL = `http://34.101.171.217:1234/user/login`
+        const URL = `http://localhost:1234/user/login`
         await Axios.post(URL,
             {
                 email: data.username,

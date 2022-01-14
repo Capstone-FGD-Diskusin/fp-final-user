@@ -14,8 +14,20 @@ import { Link, useNavigate } from 'react-router-dom'
 export default function HomeLogin() {
     const token = useSelector((state) => state.dataUser.token)
     let history = useNavigate();
-    const URL = `http://34.101.171.217:1234/user`
+    if (token == "") {
+        history("/Login");
+        console.log("ini kosong");
+    }
+
+    const URL = `http://localhost:1234/user`
     console.log("ini token", token);
+    useEffect(() => {
+        if (token == "") {
+            history("/Login");
+            console.log("ini kosong");
+        }
+    }, [token])
+
     useEffect(() => {
         if (token) {
             const getData = async () => {
@@ -64,7 +76,12 @@ export default function HomeLogin() {
             getData();
             // console.log(profile)
         }
-    }, []);
+    },
+        []);
+    if (token == "") {
+        history("/Login");
+        console.log("ini kosong");
+    }
 
 
 

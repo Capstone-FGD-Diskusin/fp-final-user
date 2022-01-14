@@ -1,4 +1,4 @@
-import { BrowserRouter ,Route, Routes } from "react-router-dom";
+import { BrowserRouter ,Route, Routes, PrivateRoute } from "react-router-dom";
 import HomeDefault from "./pages/HomeDefault/HomeDefault";
 import React from 'react';
 import Register from "./pages/Register/Register";
@@ -25,10 +25,12 @@ function App() {
         <PersistGate persistor={persistor}>
         <BrowserRouter>
         <Routes>
+          
           <Route path="/" element={<HomeDefault/>}/>
           <Route path="/Login" element={<Login/>}/>
           <Route path="/Register" element={<Register/>}/>
           <Route path="/CekLogin" element={<CekLogin/>}/>
+          {/* <PrivateRoute/> */}
           <Route path="/CekLogin/HomeLogin/Profile" element={<Profile/>}/>
           <Route path="/Login/HomeLogin" element={<HomeLogin/>}/>
           <Route path="/Login/HomeLogin/Peringkat" element={<Peringkat/>}/>
@@ -38,6 +40,8 @@ function App() {
           <Route path="/Login/HomeLogin/:id/Comment" element={<Comment/>}/>
           <Route path="/Login/HomeLogin/:id/" element={<Kategori/>}/>
         </Routes>
+
+
         </BrowserRouter>
         </PersistGate>
       </Provider>

@@ -11,21 +11,46 @@ export const SearchKategori = [
     {
         Kategori : "Politik",
         path : "/Politik",
+        Moderator :
+        [
+            "Bagus",
+            "Noval"
+        ]
     },
     {
-        Kategori : "Gaya Hidup",
+        Kategori : "GayaHidup",
         path : "/GayaHidup",
+        Moderator :
+        [
+            "Bagus",
+            "Noval"
+        ]
     },
     {
-        Kategori : "Kesehatan Mental",
+        Kategori : "KesehatanMental",
         path : "/KesehatanMental",
+        Moderator :
+        [
+            "Bagus",
+            "Noval"
+        ]
     },
     {
         Kategori : "Olahraga",
         path : "/Olahraga",
+        Moderator :
+        [
+            "Bagus",
+            "Noval"
+        ]
     },
     {
         Kategori : "Game",
         path : "/Game",
+        Moderator :
+        [
+            "Bagus",
+            "Noval"
+        ]
     },
 ]

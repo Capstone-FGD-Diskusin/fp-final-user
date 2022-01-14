@@ -59,6 +59,7 @@
 
 }
 
-.img {
-    background-image: url("../../img/iamge.png");
+
+.image input {
+    display: none;
 }

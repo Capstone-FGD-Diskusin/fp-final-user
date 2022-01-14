@@ -32,11 +32,13 @@
 }
 
 .space12 {
-    margin-top: 5px;
+    margin-top: 15px;
+
 }
 
 .space13 {
     margin-top: 10px;
+
 }
 
 .space8 {
@@ -84,9 +86,10 @@
 }
 
 .mid2 {
-    align-content: center;
+    /* align-content: center;
     text-align: center;
-    align-items: center;
+    align-items: center; */
+    margin-top: 10px;
 }
 
 .kanan {
@@ -95,29 +98,35 @@
 
 .text1 {
     color: rgba(115, 123, 125, 1);
+
 }
 
 .img {
-    width: 50%;
-    text-align: center;
+    width: 20px;
+    /* text-align: center;
     align-content: center;
     text-align: center;
-    align-items: center;
+    align-items: center; */
+    /* padding-top: 10px; */
 }
 
 .mid2:hover {
-    color: white;
+    color: rgba(255, 136, 52, 1);
     background-color: white;
 }
 
-h6 input[type='text'] {
+/* h6 input[type='text'] {
     border-color: white;
     background-color: -internal-light-dark(rgb(255, 255, 255), rgb(255, 255, 255));
     border: white;
 
-}
+} */
 
 .box input:focus {
+    outline: none;
+}
+
+.box input:focus-within {
     outline: none;
 }
 
@@ -141,4 +150,17 @@ h6 input[type='text'] {
 
 .text:hover {
     color: rgba(255, 136, 52, 1);
+}
+
+.comment:focus-within {
+    border-color: none;
+}
+
+.comment {
+    border-color: white;
+    border: none;
+    /* height: 100px; */
+    /* align-items: center;
+    align-content: center;
+    text-align: center; */
 }

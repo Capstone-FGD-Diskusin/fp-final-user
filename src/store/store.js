@@ -12,7 +12,7 @@ const persistConfig = {
     key: "root",
     storage: storage,
     // blacklist: ['navigation'],
-    whitelist: ['navigation']
+    // whitelist: ['navigation']
 }
 
 const persistedReducer = persistReducer(persistConfig, reducers)

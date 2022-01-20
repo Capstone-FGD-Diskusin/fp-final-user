@@ -1,11 +1,13 @@
 import React from 'react'
 import { Col, Container, Row, Form, InputGroup, Button, Image } from 'react-bootstrap'
 import style from './Register.module.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useState } from "react";
 import { useDispatch } from 'react-redux';
 import gambar1 from "../../img/Register.jpg"
 import gambar4 from "../../img/logoDiskusiin.png"
+import Axios from 'axios';
+import swal from 'sweetalert';
 import {
     setUsernameRegis,
     setAddressRegis,
@@ -25,6 +27,7 @@ const dataRegis = {
 };
 
 export default function Regis() {
+    let history = useNavigate();
     const [validated, setValidated] = useState(false);
     const [data, setData] = useState(dataRegis)
 
@@ -35,22 +38,85 @@ export default function Regis() {
 
     const dispatch = useDispatch()
 
-    const handleSubmit = (event) => {
-        const form = event.currentTarget;
-        if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
+    const handleSubmit = async (e) => {
+        console.log(data);
+        let isTrue = false;
+        const URL = `http://localhost:1234/user`
+        await Axios.post(URL,
+            {
+                // email: data.fileRegis,
+                username: data.usernameRegis,
+                password: data.passwordRegis,
+                email: data.emailRegis,
+            })
+            .then(res => {
+                console.log(res);
+                // console.log(res.data.token);
+                // dispatch(setToken(res.data.token));
+                if (res) {
+                    console.log("berhasil")
+                    isTrue = true;
+                }
+            }).catch(error => {
+                // this.setError()
+                console.log(error)
+                if (error.response) {
+                    console.log("--------------------------------------------------")
+                    // The request was made and the server responded with a status code
+                    // that falls out of the range of 2xx
+                    console.log(error.response.data);
+                    console.log(error.response.status);
+                    console.log(error.response.headers);
+                } else if (error.request) {
+                    console.log("*************************")
+
+                    // The request was made but no response was received
+                    // error.request is an instance of XMLHttpRequest in the browser and an instance of
+                    // http.ClientRequest in node.js
+                    console.log(error.request);
+                } else {
+                    console.log("++++++++++++++++++++++++")
+                    // Something happened in setting up the request that triggered an Error
+                    console.log('Error', error.message);
+                }
+                console.log(error.config);
+            })
+
+        if (isTrue) {
+            console.log()
+            // dispatch(login(res))
+            history("/Login");
+            swal({
+                title: "Success",
+                text: "Register Berhasil",
+                icon: "success",
+            });
+        } else {
+            return swal({
+                title: "Error",
+                text: "Password atau Email salah",
+                icon: "error",
+            });
+            // e.preventDefault();
         }
-        setValidated(true);
-        dispatch(setFileRegis(data.fileRegis))
-        dispatch(setUsernameRegis(data.usernameRegis))
-        // dispatch(setPasswordRe(data.passwordRegis))
-        dispatch(setPasswordRegis(data.passwordRegis))
-        dispatch(setEmailRegis(data.emailRegis))
-        // dispatch(setPasswordRe(data.passwordRegis))
-        dispatch(setAddressRegis(data.addressRegis))
-        dispatch(setPhoneRegis(data.phoneRegis))
-    };
+    }
+
+    // const handleSubmit = (event) => {
+    //     const form = event.currentTarget;
+    //     if (form.checkValidity() === false) {
+    //         event.preventDefault();
+    //         event.stopPropagation();
+    //     }
+    //     setValidated(true);
+    //     dispatch(setFileRegis(data.fileRegis))
+    //     dispatch(setUsernameRegis(data.usernameRegis))
+    //     // dispatch(setPasswordRe(data.passwordRegis))
+    //     dispatch(setPasswordRegis(data.passwordRegis))
+    //     dispatch(setEmailRegis(data.emailRegis))
+    //     // dispatch(setPasswordRe(data.passwordRegis))
+    //     dispatch(setAddressRegis(data.addressRegis))
+    //     dispatch(setPhoneRegis(data.phoneRegis))
+    // };
     return (
         <div>
             <Container className={style.space}>
@@ -65,7 +131,7 @@ export default function Regis() {
                         <h4 className={style.text2}>Register</h4>
 
                         <Form noValidate validated={validated} onSubmit={handleSubmit}>
-                            <Row className="mb-3">
+                            {/* <Row className="mb-3">
                                 <Form.Group controlId="validationCustom06">
                                     <Form.Control
                                         onChange={handleChange}
@@ -78,7 +144,7 @@ export default function Regis() {
                                         Please input Photo Profile.
                                     </Form.Control.Feedback>
                                 </Form.Group> <br />
-                            </Row>
+                            </Row> */}
                             <Row className="mb-3">
                                 <Form.Group controlId="validationCustom01">
                                     <Form.Control
@@ -129,7 +195,7 @@ export default function Regis() {
                                     </InputGroup>
                                 </Form.Group>
                             </Row>
-                            <Row className="mb-3">
+                            {/* <Row className="mb-3">
                                 <Form.Group controlId="validationCustom03">
                                     <Form.Control
                                         onChange={handleChange}
@@ -158,7 +224,7 @@ export default function Regis() {
                                         Phone Number is Required
                                     </Form.Control.Feedback>
                                 </Form.Group>
-                            </Row>
+                            </Row> */}
                             <Form.Group className="mb-3">
                                 <Form.Check
                                     required

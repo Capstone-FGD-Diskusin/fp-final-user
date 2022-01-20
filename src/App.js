@@ -31,8 +31,9 @@ function App() {
           <Route path="/Register" element={<Register/>}/>
           <Route path="/CekLogin" element={<CekLogin/>}/>
           {/* <PrivateRoute/> */}
-          <Route path="/CekLogin/HomeLogin/Profile" element={<Profile/>}/>
+          <Route path="/Login/HomeLogin/Profile" element={<Profile/>}/>
           <Route path="/Login/HomeLogin" element={<HomeLogin/>}/>
+          {/* <Route path="/Login/HomeLogin:id" element={<HomeLogin/>}/> */}
           <Route path="/Login/HomeLogin/Peringkat" element={<Peringkat/>}/>
           <Route path="/Login/HomeLogin/Profile/Mengikuti" element={<Mengikuti/>}/>
           <Route path="/Login/HomeLogin/Profile/Pengikut" element={<Pengikut/>}/>

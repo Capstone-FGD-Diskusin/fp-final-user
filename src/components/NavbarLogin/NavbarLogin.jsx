@@ -61,7 +61,7 @@ export default function NavbarLogin() {
 
                         </div>
                         <div className={style.profile}>
-                            <Link to={`/CekLogin/HomeLogin/Profile`}><FiIcons.FiUser size={20} /></Link>
+                            <Link to={`/Login/HomeLogin/Profile`}><FiIcons.FiUser size={20} /></Link>
                         </div>
                     </div>
                 </div>

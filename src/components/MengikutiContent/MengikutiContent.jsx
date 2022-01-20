@@ -31,7 +31,6 @@ export default function MengikutiContent(props) {
         // setMengikuti(newData)
         // console.log("ini newData", newData);
 
-
         Axios.delete(URL, {
             headers: { "Authorization": `Bearer ${token}` },
             data: {
@@ -43,8 +42,6 @@ export default function MengikutiContent(props) {
                 console.log("ini get data", getData);
                 // console.log(res);
                 // if (res.data.token) {
-
-
                 // }
 
             })
@@ -68,7 +65,6 @@ export default function MengikutiContent(props) {
                     console.log(error.response.headers);
                 } else if (error.request) {
                     console.log("*************************")
-
                     // The request was made but no response was received
                     // error.request is an instance of XMLHttpRequest in the browser and an instance of
                     // http.ClientRequest in node.js
@@ -81,9 +77,6 @@ export default function MengikutiContent(props) {
                 console.log(error.config);
             })
     }
-
-
-
 
     return (
         <div>

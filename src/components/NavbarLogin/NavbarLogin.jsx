@@ -10,8 +10,12 @@ import * as FiIcons from 'react-icons/fi';
 import * as FaIcons from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import gambar from "../../img/logoDiskusiin.png"
+import GetProfileData from '../../Hooks/GET/GetProfileData';
 
-export default function NavbarLogin() {
+export default function NavbarLogin(props) {
+    const stateProfileData = GetProfileData(props)
+    const id = stateProfileData?.data.data.ID
+    console.log(id);
     const [isDown, setIsDown] = useState(false);
     const setDown = () => {
         setIsDown(!isDown)
@@ -61,7 +65,7 @@ export default function NavbarLogin() {
 
                         </div>
                         <div className={style.profile}>
-                            <Link to={`/Login/HomeLogin/Profile`}><FiIcons.FiUser size={20} /></Link>
+                            <Link to={`/Login/HomeLogin/Profile/${id}`}><FiIcons.FiUser size={20} /></Link>
                         </div>
                     </div>
                 </div>

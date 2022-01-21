@@ -9,22 +9,24 @@ import gambar2 from "../../img/love.png"
 import { ThreadLoginData } from './ThreadLoginData';
 import { Link, useNavigate } from 'react-router-dom';
 import ThreadBalas from './ThreadBalas';
+import GetHomePageThread from '../../Hooks/GET/GetMengikutiThread';
 import GetUserID from '../../Hooks/GET/GetUserID';
 import { useSelector } from 'react-redux'
 import Axios from 'axios';
 import swal from 'sweetalert';
 import GetProfileData from '../../Hooks/GET/GetProfileData';
-import GetAllThread from '../../Hooks/GET/GetAllThread';
 
-export default function ThereadLogin(props) {
+export default function ThreadMengikutiContent(props) {
     let history = useNavigate();
     const token = useSelector((state) => state.dataUser.token)
 
-    const state = GetAllThread(props)
+    const state = GetHomePageThread(props)
     const stateProfileData = GetProfileData(props)
+    const user = GetUserID(props)
 
 
-    console.log("ini", state ? state.data.data : null);
+    // console.log("ini user", user ? user.data.data : null);
+    console.log("ini", state ? state.data.threads : null);
 
     const handleLike = async (index) => {
         let isTrue = false;
@@ -88,93 +90,29 @@ export default function ThereadLogin(props) {
         }
 
     }
-
-    const handleFollow = async (index) => {
-        let isTrue = false;
-        const URL = `http://localhost:1234/user/follow`
-        await Axios.post(URL,
-            {
-                headers: { "Authorization": `Bearer ${token}` },
-                data: {
-                    Followed_id: index,
-                }
-            })
-            .then(res => {
-                console.log(res);
-                // console.log(res.data.token);
-                // dispatch(setToken(res.data.token));
-                if (res) {
-                    console.log("berhasil")
-                    isTrue = true;
-                }
-            }).catch(error => {
-                // this.setError()
-                console.log(error)
-                if (error.response) {
-                    console.log("--------------------------------------------------")
-                    // The request was made and the server responded with a status code
-                    // that falls out of the range of 2xx
-                    console.log(error.response.data);
-                    console.log(error.response.status);
-                    console.log(error.response.headers);
-                } else if (error.request) {
-                    console.log("*************************")
-
-                    // The request was made but no response was received
-                    // error.request is an instance of XMLHttpRequest in the browser and an instance of
-                    // http.ClientRequest in node.js
-                    console.log(error.request);
-                } else {
-                    console.log("++++++++++++++++++++++++")
-                    // Something happened in setting up the request that triggered an Error
-                    console.log('Error', error.message);
-                }
-                console.log(error.config);
-            })
-
-        if (isTrue) {
-            console.log()
-            // dispatch(login(res))
-            history("/Login/HomeLogin");
-            swal({
-                title: "Success",
-                text: "Register Berhasil",
-                icon: "success",
-            });
-        } else {
-            return swal({
-                title: "Error",
-                text: "Password atau Email salah",
-                icon: "error",
-            });
-            // e.preventDefault();
-        }
-
-    }
-
     return (
         <>
             <div className={style.space}>
-                {state?.data.data.map((item, index) => {
+                {state?.data.threads.map((item, index) => {
                     return (
                         <div key={index}>
                             <Container className={style.space7}>
                                 <Row>
                                     <Col sm={6} className={style.posisi}>
                                         <FiIcons.FiUser size={25} />
-                                        <h6 className={style.space2}>
-                                            {/* {item.Name} */}
-
+                                        {/* <h6 className={style.space2}>
+                                            {item.Name}
+                                            {console.log("ini state", state ? state : null)}
                                             {
                                                 stateProfileData ? stateProfileData.data.data.Username : null
                                             }
-                                        </h6>
+                                        </h6> */}
                                         <h6 className={style.space3}>
                                             <Button
                                                 variant=""
                                                 className={style.butIkut}
-                                                onClick={() => handleFollow(item.UserID)}
-                                            >Ikuti
+                                            // onClick={() => handleFollow(item.UserID)}
+                                            >Mengikuti
                                             </Button>
                                         </h6>
                                     </Col>
@@ -208,6 +146,7 @@ export default function ThereadLogin(props) {
                                     <Col className={style.bag}>
                                         <div className={style.det}>
 
+
                                             <Image src={gambar2} width="20px" height="20px" />
                                             {/* <div className={style.image}>
                                                 <label for="like-input">
@@ -219,8 +158,8 @@ export default function ThereadLogin(props) {
 
 
 
-                                                    value={data.img}
-                                                    name="img"
+                                                value={data.img}
+                                                name="img"
 
                                                 />
                                             </div> */}
@@ -236,8 +175,8 @@ export default function ThereadLogin(props) {
                                             </Link>
                                             <h6 className={style.space8}>
                                                 {/* <Link to={`/Login/HomeLogin/${item.Id}`}><ThreadBalas /></Link> */}
-                                                {/* <ThreadBalas Id={index} />
-                                                <Accordion>
+                                                {/* <ThreadBalas Id={index} /> */}
+                                                {/* <Accordion>
                                                     <Accordion.Item eventKey="0">
                                                         <Accordion.Header>1</Accordion.Header>
                                                         <Accordion.Body>
@@ -270,7 +209,4 @@ export default function ThereadLogin(props) {
             </div>
         </>
     )
-    // return (
-    //     <></>
-    // )
 }

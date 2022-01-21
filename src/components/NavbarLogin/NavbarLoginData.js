@@ -5,7 +5,7 @@ export const NavbarLoginData = [
     },
     {
         title: "Mengikuti",
-        path: ""
+        path: "/Login/HomeLogin/Mengikuti"
     },
     {
         title: "Peringkat Diskusi",

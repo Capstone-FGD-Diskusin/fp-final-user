@@ -4,21 +4,17 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import swal from 'sweetalert';
 
-export default function GetUserID() {
+export default function GetAllThread() {
     const [state,setState] = useState(null)
     
-    const token = useSelector((state) => state.dataUser.token)
-    const URL = `http://localhost:1234/user/:id`
+    const URL = `http://localhost:1234/thread`
     let history = useNavigate();
 
     useEffect(() => {
-        if (token) {
             const getData = async () => {
-                Axios.get(URL, {
-                    headers: { "Authorization": `Bearer ${token}` }
-                })
+                Axios.get(URL)
                     .then(res => {
-                        // console.log("inires",res);
+                        // console.log(res);
                         setState(res)
                         
                         // setProfile(res.data.data);
@@ -61,7 +57,7 @@ export default function GetUserID() {
             }
             getData();
             // console.log(profile)
-        }
+        
     },
         []);
         return  state

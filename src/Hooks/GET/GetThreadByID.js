@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import Axios from 'axios';
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import swal from 'sweetalert';
 
-export default function GetHomePageThread() {
+export default function GetThreadByID() {
+    const { id } = useParams();
     const [state,setState] = useState(null)
     
     const token = useSelector((state) => state.dataUser.token)
@@ -18,7 +19,7 @@ export default function GetHomePageThread() {
                     headers: { "Authorization": `Bearer ${token}` }
                 })
                     .then(res => {
-                        console.log(res);
+                        // console.log(res);
                         setState(res)
                         
                         // setProfile(res.data.data);

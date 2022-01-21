@@ -4,11 +4,11 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import swal from 'sweetalert';
 
-export default function GetUserID() {
+export default function GeMengikutiThread() {
     const [state,setState] = useState(null)
     
     const token = useSelector((state) => state.dataUser.token)
-    const URL = `http://localhost:1234/user/:id`
+    const URL = `http://localhost:1234/thread/homepage`
     let history = useNavigate();
 
     useEffect(() => {
@@ -18,7 +18,7 @@ export default function GetUserID() {
                     headers: { "Authorization": `Bearer ${token}` }
                 })
                     .then(res => {
-                        // console.log("inires",res);
+                        // console.log(res);
                         setState(res)
                         
                         // setProfile(res.data.data);

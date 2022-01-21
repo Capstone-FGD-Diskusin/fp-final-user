@@ -41,12 +41,6 @@ export default function MengikutiContent(props) {
             .then(res => {
                 getData()
                 console.log("ini get data", getData);
-                // console.log(res);
-                // if (res.data.token) {
-
-
-                // }
-
             })
             .catch(error => {
                 // this.setError()
@@ -82,9 +76,6 @@ export default function MengikutiContent(props) {
             })
     }
 
-
-
-
     return (
         <div>
             <Container>
@@ -98,7 +89,8 @@ export default function MengikutiContent(props) {
                                 <Row className={style.box} >
                                     <Col className={style.space3} sm={9}>
                                         <FiIcons.FiUser size={20} className={style.space} />
-                                        <h6 className={style.space2}>{item ? item.UserID : null}</h6>
+                                        <h6 className={style.space2}>{item ? item.Name : null}</h6>
+                                        {/* {console.log("ini state", state ? state : null)} */}
                                     </Col>
                                     <Col sm={3}>
                                         <Button className={style.butFol} onClick={() => handleDelete(item.UserID)} >

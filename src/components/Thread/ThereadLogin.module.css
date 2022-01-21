@@ -100,3 +100,19 @@
 .text:hover {
     color: rgba(255, 136, 52, 1);
 }
+
+.image input {
+    display: none;
+    background-color: white;
+    color: white;
+}
+
+.image input {
+    display: none;
+}
+
+/*  */
+.love {
+    color: black;
+    background: black;
+}

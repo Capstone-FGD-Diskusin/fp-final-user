@@ -11,9 +11,11 @@ import ThereadLogin from '../Thread/ThereadLogin';
 import ThereadProfile from './ThreadProfile';
 import ThreadProfile from './ThreadProfile';
 import GetProfileData from '../../Hooks/GET/GetProfileData';
+import GetHomePageThread from '../../Hooks/GET/GetMengikutiThread';
 
 export default function ProfileContent(props) {
     const state = GetProfileData(props)
+
     // console.log(state);
 
     return (
@@ -38,7 +40,9 @@ export default function ProfileContent(props) {
                         <Row>
                             <Col className={style.bag}>
                                 <Image src={gambar} width="25px" height="25px" className={style.img} />
-                                <h6 className={style.text}>{state ? state.data.data.Username : null}</h6>
+                                <h6 className={style.text}>
+                                    10
+                                </h6>
 
                                 <h6 className={style.text2}>10</h6>
                                 <Link to={`/Login/HomeLogin/Profile/Mengikuti`} className={style.text3}>

@@ -56,7 +56,11 @@
 .thread {
     border-color: rgba(255, 136, 52, 1);
     height: 150px;
+}
 
+.inputText {
+    border-color: rgba(255, 136, 52, 1);
+    margin-bottom: 5px;
 }
 
 

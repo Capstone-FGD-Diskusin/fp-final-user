@@ -13,64 +13,115 @@ import GetHomePageThread from '../../Hooks/GET/GetMengikutiThread';
 import GetProfileData from '../../Hooks/GET/GetProfileData';
 import GetThreadByID from '../../Hooks/GET/GetThreadByID';
 // import GetAllThreadBYUser from '../../Hooks/GET/GetAllThreadBYUser';
+import { useSelector } from 'react-redux'
 import Axios from 'axios';
 import swal from 'sweetalert';
 
 export default function ThreadProfile(props) {
     const stateProfileData = GetProfileData(props)
 
+    const token = useSelector((state) => state.dataUser.token)
     const { id } = useParams();
     const [state, setState] = useState(null)
     // console.log("ini state", state ? state : null);
     const URL = `http://localhost:1234/user/` + id + `/threads`
+    const i = 0
+
     let history = useNavigate();
 
+    const handleDelete = (index) => {
+        const URLDEL = `http://localhost:1234/thread/` + index + ``
+        Axios.delete(URLDEL, {
+            headers: { "Authorization": `Bearer ${token}` },
+        })
+            .then(res => {
+                getData()
+                // console.log("ini get data", getData);
+                console.log("berhasil")
+            })
+            .catch(error => {
+                // this.setError()
+                console.log(error)
+                if (error.response) {
+                    console.log("--------------------------------------------------")
+                    // The request was made and the server responded with a status code
+                    // that falls out of the range of 2xx
+                    console.log(error.response.data);
+                    console.log(error.response.status);
+                    if (error.response.status === 401) {
+                        history("/Login");
+                        swal({
+                            title: "Error",
+                            text: "Mohon Login Terlebih Dahulu",
+                            icon: "error",
+                        });
+                    }
+                    console.log(error.response.headers);
+                } else if (error.request) {
+                    console.log("*************************")
+
+                    // The request was made but no response was received
+                    // error.request is an instance of XMLHttpRequest in the browser and an instance of
+                    // http.ClientRequest in node.js
+                    console.log(error.request);
+                } else {
+                    console.log("++++++++++++++++++++++++")
+                    // Something happened in setting up the request that triggered an Error
+                    console.log('Error', error.message);
+                }
+                console.log(error.config);
+            })
+    }
+
+    const getData = async () => {
+        Axios.get(URL)
+            .then(res => {
+                console.log("ini res", res);
+                setState(res)
+
+                // setProfile(res.data.data);
+                if (res.data.token) {
+                    console.log("berhasil")
+
+                }
+            }).catch(error => {
+                // this.setError()
+                console.log(error)
+                if (error.response) {
+                    console.log("--------------------------------------------------")
+                    // The request was made and the server responded with a status code
+                    // that falls out of the range of 2xx
+                    console.log(error.response.data);
+                    console.log(error.response.status);
+                    if (error.response.status === 401) {
+                        history("/Login");
+                        swal({
+                            title: "Error",
+                            text: "Mohon Login Terlebih Dahulu",
+                            icon: "error",
+                        });
+                    }
+                    console.log(error.response.headers);
+                } else if (error.request) {
+                    console.log("*************************")
+
+                    // The request was made but no response was received
+                    // error.request is an instance of XMLHttpRequest in the browser and an instance of
+                    // http.ClientRequest in node.js
+                    console.log(error.request);
+                } else {
+                    console.log("++++++++++++++++++++++++")
+                    // Something happened in setting up the request that triggered an Error
+                    console.log('Error', error.message);
+                }
+                console.log(error.config);
+            })
+    }
     useEffect(() => {
-        const getData = async () => {
-            Axios.get(URL)
-                .then(res => {
-                    console.log("ini res", res);
-                    setState(res)
-
-                    // setProfile(res.data.data);
-                    if (res.data.token) {
-                        console.log("berhasil")
-
-                    }
-                }).catch(error => {
-                    // this.setError()
-                    console.log(error)
-                    if (error.response) {
-                        console.log("--------------------------------------------------")
-                        // The request was made and the server responded with a status code
-                        // that falls out of the range of 2xx
-                        console.log(error.response.data);
-                        console.log(error.response.status);
-                        if (error.response.status === 401) {
-                            history("/Login");
-                            swal({
-                                title: "Error",
-                                text: "Mohon Login Terlebih Dahulu",
-                                icon: "error",
-                            });
-                        }
-                        console.log(error.response.headers);
-                    } else if (error.request) {
-                        console.log("*************************")
-
-                        // The request was made but no response was received
-                        // error.request is an instance of XMLHttpRequest in the browser and an instance of
-                        // http.ClientRequest in node.js
-                        console.log(error.request);
-                    } else {
-                        console.log("++++++++++++++++++++++++")
-                        // Something happened in setting up the request that triggered an Error
-                        console.log('Error', error.message);
-                    }
-                    console.log(error.config);
-                })
+        if (i == 0) {
+            getData();
         }
-        getData();
+
         // console.log(profile)
 
     }, []);
@@ -94,6 +145,15 @@ export default function ThreadProfile(props) {
                                                 }
 
                                             </h6>
+                                            <div className={style.space12}>
+                                                <button className={style.butEdit}>Edit</button>
+                                                <button
+                                                    className={style.butDel}
+                                                    onClick={() => handleDelete(item.ID)}
+                                                >
+                                                    Hapus</button>
+                                            </div>
+
                                         </Col>
                                         <Col sm={3}></Col>
                                         <Col sm={3}></Col>
@@ -138,8 +198,8 @@ export default function ThreadProfile(props) {
                                                 <FiIcons.FiShare2 className={style.space11} />
 
                                             </div>
-                                            <Link to={`/Login/HomeLogin/${item.Kategori}`}
-                                                className={style.text}><h6 >{item.Kategori}</h6></Link>
+                                            <Link to={`/Login/HomeLogin/${item.CategoryName}`}
+                                                className={style.text}><h6 >{item.CategoryName}</h6></Link>
                                         </Col>
                                     </Row>
                                 </Container>

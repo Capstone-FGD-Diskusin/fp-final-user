@@ -12,11 +12,17 @@ import ThereadProfile from './ThreadProfile';
 import ThreadProfile from './ThreadProfile';
 import GetProfileData from '../../Hooks/GET/GetProfileData';
 import GetHomePageThread from '../../Hooks/GET/GetMengikutiThread';
+import GetFollowing from '../../Hooks/GET/GetFollowing';
+import GetFollowed from '../../Hooks/GET/GetFollowed';
 
 export default function ProfileContent(props) {
-    const state = GetProfileData(props)
+    const { state } = GetFollowing(props)
+    const state2 = GetFollowed(props)
 
-    // console.log(state);
+    const stateData = GetProfileData(props)
+    const i = 1
+
+    console.log("ini state", state2 ? state2 : null);
 
     return (
         <div>
@@ -30,9 +36,9 @@ export default function ProfileContent(props) {
                     <Col >
                         <Row>
                             <Col><h1 className={style.space2}>
-                                {console.log(state ? state.data.data.Username : null)}
+                                {/* {console.log(stateData ? stateData.data.data.Username : null)} */}
                                 {
-                                    state ? state.data.data.Username : null
+                                    stateData ? stateData.data.data.Username : null
                                 }
                             </h1></Col>
                         </Row>
@@ -44,13 +50,75 @@ export default function ProfileContent(props) {
                                     10
                                 </h6>
 
-                                <h6 className={style.text2}>10</h6>
+                                <h6 className={style.text2}>
+                                    {
+                                        state?.data.IDFollowed.map((item, index) => {
+                                            if (index == 0) {
+                                                for (let i = 1; i <= index; i++) {
+                                                    // const element = array[index];
+                                                    return (
+                                                        <div key={index}>
+                                                            {i}
+
+                                                        </div>
+                                                    )
+                                                    // for (let index = 0; index < i; index++) {
+
+                                                    //     return (
+                                                    //         <>
+                                                    //             test</>
+                                                    //     )
+                                                    // }
+                                                }
+
+                                            } else if (index == null) {
+                                                return (
+                                                    <div key={index}>
+                                                        0
+                                                    </div>
+                                                )
+                                            }
+                                        })
+                                    }
+                                </h6>
                                 <Link to={`/Login/HomeLogin/Profile/Mengikuti`} className={style.text3}>
                                     <h6>Mengikuti</h6>
                                 </Link>
 
-                                <h6 className={style.text2}>{state ? state.data.data.Follower : null}</h6>
-                                <Link to={`/Login/HomeLogin/Profile/Pengikut`} className={style.text3}><h6 >Pengikut</h6></Link>
+                                <h6 className={style.text2}>
+                                    {
+
+                                        state2?.state?.data.IDFollowed.map((item, index) => {
+                                            if (index == 0) {
+                                                for (let i = 1; i <= index; i++) {
+                                                    // const element = array[index];
+                                                    return (
+                                                        <div key={index}>
+                                                            {i}
+                                                        </div>
+                                                    )
+                                                    // for (let index = 0; index < i; index++) {
+
+                                                    //     return (
+                                                    //         <>
+                                                    //             test</>
+                                                    //     )
+                                                    // }
+                                                }
+
+                                            } else if (index == null) {
+                                                return (
+                                                    <div key={index}>
+                                                        0
+                                                    </div>
+                                                )
+                                            }
+                                        })
+                                    }
+                                </h6>
+                                <Link to={`/Login/HomeLogin/Profile/Pengikut`} className={style.text3}>
+                                    <h6 >Pengikut</h6>
+                                </Link>
                                 <h6 className={style.text4}>
                                     <BiIcons.BiCommentDetail size={20} className={style.space5} />
                                     10

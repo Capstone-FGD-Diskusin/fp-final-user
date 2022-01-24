@@ -6,30 +6,85 @@ import * as FaIcons from 'react-icons/fa';
 import { Pengikut } from './Pengikut';
 import { useState } from 'react';
 import GetFollowed from '../../Hooks/GET/GetFollowed';
+import { Link, useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import Axios from 'axios';
+import swal from 'sweetalert';
 
 
 export default function PengikutContent(props) {
-    const [Data, setPengikut] = useState(Pengikut)
-    const stateGetFollowed = GetFollowed(props)
-    console.log("ini stateGetFollowed", stateGetFollowed ? stateGetFollowed.state.data.IDFollowed : null);
-    const handleDelete = (index) => {
-        const newData = Data.filter((e, i) => {
-            if (i !== index) {
-                return e
+    // const [Data, setPengikut] = useState(Pengikut)
+    const { state, getData } = GetFollowed(props)
+    const stateData = state?.data.IDFollowed
+    // console.log("ini stateData", stateData ? stateData : null);
+    console.log("ini state", state ? state : null);
 
+    const token = useSelector((state) => state.dataUser.token)
+    let history = useNavigate();
+    const URL = `http://localhost:1234/user/followed`
+
+    const handleDelete = (index) => {
+        // const newData = Data.filter((e, i) => {
+        //     if (i !== index) {
+        //         return e
+
+        //     }
+        // })
+        // setPengikut(newData)
+        Axios.delete(URL, {
+            headers: { "Authorization": `Bearer ${token}` },
+            data: {
+                Following_id: index,
             }
         })
-        setPengikut(newData)
+            .then(res => {
+                getData()
+                console.log("ini get data", getData);
+            })
+            .catch(error => {
+                // this.setError()
+                console.log(error)
+                if (error.response) {
+                    console.log("--------------------------------------------------")
+                    // The request was made and the server responded with a status code
+                    // that falls out of the range of 2xx
+                    console.log(error.response.data);
+                    console.log(error.response.status);
+                    if (error.response.status === 401) {
+                        history("/Login");
+                        swal({
+                            title: "Error",
+                            text: "Mohon Login Terlebih Dahulu",
+                            icon: "error",
+                        });
+                    }
+                    console.log(error.response.headers);
+                } else if (error.request) {
+                    console.log("*************************")
+
+                    // The request was made but no response was received
+                    // error.request is an instance of XMLHttpRequest in the browser and an instance of
+                    // http.ClientRequest in node.js
+                    console.log(error.request);
+                } else {
+                    console.log("++++++++++++++++++++++++")
+                    // Something happened in setting up the request that triggered an Error
+                    console.log('Error', error.message);
+                }
+                console.log(error.config);
+            })
+
+
     }
     return (
         <div>
 
             <Container>
                 <Row className={style.space4}>
-                    <h2 className={style.text}>Orang Yang Pengikut Anda</h2>
+                    <h2 className={style.text}>Orang Yang Mengikuti Anda</h2>
                 </Row>
                 {
-                    stateGetFollowed?.state.data.IDFollowed.map((item, index) => {
+                    stateData?.map((item, index) => {
                         return (
                             <div key={index}>
                                 <Row className={style.box} >
@@ -39,7 +94,9 @@ export default function PengikutContent(props) {
 
                                     </Col>
                                     <Col sm={3}>
-                                        <Button className={style.butFol} onClick={() => handleDelete(index)}>
+                                        <Button className={style.butFol}
+                                            onClick={() => handleDelete(item.UserID)}
+                                        >
                                             <h6 className={style.text2}>Hapus</h6>
                                         </Button>
                                         <Button className={style.butFol}><h6 className={style.text2}>Ikuti Balik</h6></Button>

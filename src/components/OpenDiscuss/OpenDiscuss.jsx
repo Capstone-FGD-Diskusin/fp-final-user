@@ -5,23 +5,27 @@ import * as FiIcons from 'react-icons/fi';
 import * as FaIcons from 'react-icons/fa';
 import gambar from "../../img/iamge.png"
 import gambar2 from "../../img/unduh.png"
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import { useState, } from 'react';
+import { useSelector } from 'react-redux'
+import Axios from 'axios';
+import swal from 'sweetalert';
 
 import MyVerticallyCenteredModal from './PopUp';
 import { SearchKategori } from '../SearchContent/SearchKategori';
 
 export default function OpenDiscuss() {
-
+    const token = useSelector((state) => state.dataUser.token)
     const file = useRef(null);
 
     const dataThread = {
+        title: "",
         thread: "",
-        img: "",
+        // img: "",
         kategori: "",
     }
-
+    let history = useNavigate();
     const [data, setData] = useState(dataThread)
-
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -39,50 +43,124 @@ export default function OpenDiscuss() {
 
     // }
 
-    const handleImg = (event) => {
-        console.log(file.current.files);
-        const formData = new FormData();
-        Object.values(file.current.files).forEach((item) => {
-            formData.append('file', item);
-        });
-    }
+    // const handleImg = (event) => {
+    //     console.log(file.current.files);
+    //     const formData = new FormData();
+    //     Object.values(file.current.files).forEach((item) => {
+    //         formData.append('file', item);
+    //     });
+    // }
 
-    const handleUpload = (event) => {
-        //file.current.files
-        console.log(file.current.files);
-        const formData = new FormData();
-        Object.values(file.current.files).forEach((item) => {
-            formData.append('file', item);
-        });
-        fetch(
-            `https://6141c998357db50017b3dd1b.mockapi.io/kampus_merdeka/upload`,
-            {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                    Authorization: 'Bearer token...',
-                },
-                body: formData,
-            }
-        )
-            .then((response) => {
-                return response.json();
+    const handleUpload = async (event) => {
+        console.log(data);
+        console.log(token);
+
+        let isTrue = false;
+        const URL = `http://localhost:1234/thread`
+        // event.preventDefault()
+        await Axios.post(URL, {
+            title: data.title,
+            description: data.thread,
+            category_name: data.kategori,
+        }, {
+            headers: { "Authorization": `Bearer ${token}` },
+        })
+            .then(res => {
+                console.log("ini res", res);
+                // console.log(res.data.token);
+                // dispatch(setToken(res.data.token));
+                if (res) {
+                    console.log("berhasil")
+                    isTrue = true;
+                }
+
+            }).catch(error => {
+                // this.setError()
+                console.log(error)
+                if (error.response) {
+                    console.log("--------------------------------------------------")
+                    // The request was made and the server responded with a status code
+                    // that falls out of the range of 2xx
+                    console.log(error.response.data);
+                    console.log(error.response.status);
+                    console.log(error.response.headers);
+                } else if (error.request) {
+                    console.log("*************************")
+
+                    // The request was made but no response was received
+                    // error.request is an instance of XMLHttpRequest in the browser and an instance of
+                    // http.ClientRequest in node.js
+                    console.log(error.request);
+                } else {
+                    console.log("++++++++++++++++++++++++")
+                    // Something happened in setting up the request that triggered an Error
+                    console.log('Error', error.message);
+                }
+                console.log(error.config);
             })
-            .then((result) => {
-                console.log(result.name);
-                return result.fullName;
-            })
-            .catch((error) => {
-                return 'gagal';
+
+        if (isTrue) {
+            console.log()
+            // dispatch(login(res))
+            history("/Login/HomeLogin");
+            swal({
+                title: "Success",
+                text: "Input Thread Berhasil",
+                icon: "success",
             });
+        } else {
+            return swal({
+                title: "Error",
+                text: "ERROR",
+                icon: "error",
+            });
+            // e.preventDefault();
+        }
     };
+    //file.current.files
+    // console.log(file.current.files);
+    // const formData = new FormData();
+    // Object.values(file.current.files).forEach((item) => {
+    //     formData.append('file', item);
+    // });
+    // fetch(
+    //     `https://6141c998357db50017b3dd1b.mockapi.io/kampus_merdeka/upload`,
+    //     {
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'multipart/form-data',
+    //             Authorization: 'Bearer token...',
+    //         },
+    //         body: formData,
+    //     }
+    // )
+    //     .then((response) => {
+    //         return response.json();
+    //     })
+    //     .then((result) => {
+    //         console.log(result.name);
+    //         return result.fullName;
+    //     })
+    //     .catch((error) => {
+    //         return 'gagal';
+    //     });
+
 
     return (
         <div>
             <div className={style.space}>
                 <div >
                     <Container>
-                        <Form>
+                        <Form onSubmit={handleUpload}>
+                            <Form.Control
+                                name="title"
+                                value={data.title}
+                                onChange={handleChange}
+                                className={style.inputText}
+                                type="text"
+                                label="Title"
+                                placeholder="Title"
+                            />
                             <Form.Control
                                 name="thread"
                                 value={data.thread}
@@ -90,7 +168,7 @@ export default function OpenDiscuss() {
                                 className={style.thread}
                                 as="textarea"
                                 label="Ayo Buka Diskusi..."
-                                placeholder="Leave a comment here"
+                                placeholder="Ayo Buka Diskusi..."
 
                             />
                             <Row >
@@ -98,21 +176,18 @@ export default function OpenDiscuss() {
                                 <Col className={style.unggah}>
                                     {/* <h6 ><MyVerticallyCenteredModal width="5px" /></h6> */}
                                     {/* <Image src={gambar} width="35px" height="35px" /> */}
-                                    <div className={style.image}>
+                                    {/* <div className={style.image}>
                                         <label for="file-input">
-                                            {/* <Image src={gambar} /> */}
+                                            
                                             <img src={gambar} width="30px" />
                                         </label>
                                         <input
                                             id="file-input"
                                             type="file"
                                             ref={file}
-
-                                            // value={data.img}
-                                            // name="img"
                                             onChange={handleImg}
                                         />
-                                    </div>
+                                    </div> */}
                                     <Form.Select className={style.texts}
                                         onChange={handleChange}
                                         name="kategori"
@@ -129,7 +204,12 @@ export default function OpenDiscuss() {
                                     </Form.Select>
 
                                     {/* <MyVerticallyCenteredModal props={data} /> */}
-                                    <Button className={style.text2} onClick={handleShow}>
+                                    <Button
+                                        className={style.text2}
+                                        onClick={handleShow}
+                                    // onClick={() => handleUpload()}
+                                    // onClick={handleUpload}
+                                    >
                                         <h6 className={style.posisi}>
                                             <Image src={gambar2} width="15px" height="15px" className={style.unduh} />
                                             Upload
@@ -144,15 +224,18 @@ export default function OpenDiscuss() {
                                             <Modal.Title>Thread</Modal.Title>
                                         </Modal.Header>
                                         <Modal.Body>
+                                            <h5>Title : {data.title}</h5>
+                                            <h6>Kategori : {data.kategori}</h6>
+                                            <h6>Thread :</h6>
                                             {data.thread}
                                             <br />
-                                            <h6>Kategori : {data.kategori}</h6>
+
                                             <br />
                                             {/* {file.current.files} */}
 
-                                            {
+                                            {/* {
                                                 (file.current?.files?.length ? <img src={URL.createObjectURL(file.current?.files[0])} alt="" /> : null)
-                                            }
+                                            } */}
 
                                             {/* <img src={URL.createObjectURL(file.current.files)} alt="" /> */}
 
@@ -162,7 +245,12 @@ export default function OpenDiscuss() {
                                             <Button variant="secondary" onClick={handleClose}>
                                                 Cancel
                                             </Button>
-                                            <Button variant="primary" onClick={() => handleUpload()}>
+                                            <Button
+                                                variant="primary"
+                                                type="submit"
+                                                onClick={() => handleUpload()}
+                                            // onClick={handleUpload}
+                                            >
                                                 Upload Thread
                                             </Button>
                                         </Modal.Footer>

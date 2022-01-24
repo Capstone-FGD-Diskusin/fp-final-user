@@ -16,6 +16,8 @@ export default function MengikutiContent(props) {
     const { state, getData } = GetFollowing(props)
     const files = state?.data.IDFollowed
 
+    console.log("ini state getfollowing", state);
+
 
     const token = useSelector((state) => state.dataUser.token)
     let history = useNavigate();
@@ -89,6 +91,7 @@ export default function MengikutiContent(props) {
                                 <Row className={style.box} >
                                     <Col className={style.space3} sm={9}>
                                         <FiIcons.FiUser size={20} className={style.space} />
+
                                         <h6 className={style.space2}>{item ? item.Name : null}</h6>
                                         {/* {console.log("ini state", state ? state : null)} */}
                                     </Col>

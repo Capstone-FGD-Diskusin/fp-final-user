@@ -17,6 +17,7 @@ export default function Peringkat() {
             console.log("ini kosong");
         }
     }, [token])
+
     return (
         <div>
             <NavbarLogin />

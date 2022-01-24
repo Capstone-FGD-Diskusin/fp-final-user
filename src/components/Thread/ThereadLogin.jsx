@@ -15,16 +15,16 @@ import Axios from 'axios';
 import swal from 'sweetalert';
 import GetProfileData from '../../Hooks/GET/GetProfileData';
 import GetAllThread from '../../Hooks/GET/GetAllThread';
+import GetFollowing from '../../Hooks/GET/GetFollowing';
 
 export default function ThereadLogin(props) {
     let history = useNavigate();
     const token = useSelector((state) => state.dataUser.token)
 
-    const state = GetAllThread(props)
-    const stateProfileData = GetProfileData(props)
-
-
-    console.log("ini", state ? state.data.data : null);
+    const state2 = GetAllThread(props)
+    // console.log("ini", state ? state.data.data : null);
+    const { state } = GetFollowing(props)
+    // console.log("ini state", state ? state.data.IDFollowed : null);
 
     const handleLike = async (index) => {
         let isTrue = false;
@@ -90,15 +90,17 @@ export default function ThereadLogin(props) {
     }
 
     const handleFollow = async (index) => {
+        console.log("ini index", index);
         let isTrue = false;
         const URL = `http://localhost:1234/user/follow`
+        // index.preventDefault()
         await Axios.post(URL,
             {
-                headers: { "Authorization": `Bearer ${token}` },
-                data: {
-                    Followed_id: index,
-                }
-            })
+
+                followed_id: index,
+            }, {
+            headers: { "Authorization": `Bearer ${token}` },
+        })
             .then(res => {
                 console.log(res);
                 // console.log(res.data.token);
@@ -138,13 +140,13 @@ export default function ThereadLogin(props) {
             history("/Login/HomeLogin");
             swal({
                 title: "Success",
-                text: "Register Berhasil",
+                text: "Follow Berhasil",
                 icon: "success",
             });
         } else {
             return swal({
                 title: "Error",
-                text: "Password atau Email salah",
+                text: "ERROR",
                 icon: "error",
             });
             // e.preventDefault();
@@ -155,7 +157,8 @@ export default function ThereadLogin(props) {
     return (
         <>
             <div className={style.space}>
-                {state?.data.data.map((item, index) => {
+                {state2?.data.data.map((item, index) => {
+                    console.log("ini item", item);
                     return (
                         <div key={index}>
                             <Container className={style.space7}>
@@ -166,17 +169,61 @@ export default function ThereadLogin(props) {
                                             {/* {item.Name} */}
 
                                             {
-                                                stateProfileData ? stateProfileData.data.data.Username : null
+                                                item ? item.UserName : null
                                             }
                                         </h6>
-                                        <h6 className={style.space3}>
-                                            <Button
-                                                variant=""
-                                                className={style.butIkut}
-                                                onClick={() => handleFollow(item.UserID)}
-                                            >Ikuti
-                                            </Button>
-                                        </h6>
+
+                                        {state?.data.IDFollowed.filter(item2 => item2.Name == item.UserName).map((item2, index) => {
+
+                                            return (
+                                                <div>
+                                                    <h6 className={style.space3}>
+                                                        <Button
+                                                            variant=""
+                                                            className={style.butIkut}
+                                                        // onClick={() => handleFollow(item.UserID)}
+                                                        >Mengikuti
+                                                        </Button>
+                                                    </h6>
+                                                </div>
+                                            )
+                                            // {
+                                            //     state?.data.IDFollowed.filter(item2 => item2.Name != item.UserName).map((item2, index) => {
+
+                                            //         return (
+                                            //             <div>
+                                            //                 <h6 className={style.space3}>
+                                            //                     <Button
+                                            //                         variant=""
+                                            //                         className={style.butIkut2}
+                                            //                         onClick={() => handleFollow(item.UserID)}
+                                            //                     >Ikuti
+                                            //                     </Button>
+                                            //                 </h6>
+                                            //             </div>
+                                            //         )
+                                            //     })
+                                            // }
+
+                                        })}
+                                        {state?.data.IDFollowed.filter(item2 => item2.Name != item.UserName).map((item2, index) => {
+                                            return (
+                                                <div>
+                                                    <h6 className={style.space3}>
+                                                        <Button
+                                                            variant=""
+                                                            className={style.butIkut2}
+                                                            onClick={() => handleFollow(item.UserID)}
+                                                        >Ikuti
+                                                        </Button>
+                                                    </h6>
+                                                </div>
+                                            )
+                                        })}
+
+
+
+
                                     </Col>
                                     <Col sm={3}></Col>
                                     <Col sm={3}></Col>
@@ -256,7 +303,7 @@ export default function ThereadLogin(props) {
                                             <FiIcons.FiShare2 className={style.space11} />
 
                                         </div>
-                                        <Link to={``} className={style.text}>
+                                        <Link to={`/Login/HomeLogin/${item.CategoryName}`} className={style.text}>
                                             <h6 >
                                                 {item ? item.CategoryName : null}
                                             </h6></Link>
@@ -271,6 +318,79 @@ export default function ThereadLogin(props) {
         </>
     )
     // return (
-    //     <></>
+    //     <>
+    //         <div>
+    //             <h1>LOREMOEJISDHAIDGIB,</h1>
+    //             {
+    //                 state2?.data.data.map((item, index) => {
+
+    //                     return (
+    //                         <div key={index}>
+    //                             ==============================================
+    //                             {
+    //                                 console.log("ini", state2 ? state2?.data.data : null)
+    //                             }
+
+    // {state?.data.IDFollowed.filter(item2 => item2.Name == item.UserName).map((item2, index) => {
+
+    //     return (
+    //         <div>
+    //             COcok
+    //         </div>
+    //     )
+    // })}
+    // {state?.data.IDFollowed.filter(item2 => item2.Name != item.UserName).map((item2, index) => {
+
+    //     return (
+    //         <div>
+    //             Engga
+    //         </div>
+    //     )
+    // })}
+    //                             {/* {
+    //                                 item ? item.UserName : null
+    //                             } */}
+    //                         </div>
+    //                     )
+    //                 })
+
+    //             }
+
+    //         </div>
+    //     </>
     // )
 }
+
+
+                    // state?.data.IDFollowed.map((item2, index2) => {
+                    //     console.log("following", state?.data.IDFollowed);
+                    //     console.log("thread", state2?.data.data);
+                    //     if (item2.Name == item.UserName) {
+                    //         return (
+                    //             <div key={index}>
+                    //                 asd
+                    //                 {/* {
+                    //                     console.log("thread dalem", item.UserName)
+                    //                 } */}
+                    //                 <h1>testing</h1>
+                    //             </div>
+                    //         )
+                    //     } else if (item2.Name != item.UserName) {
+                    //         return (
+                    //             <div key={index}>
+                    //                 asd
+                    //                 {item ? item.UserName : null}
+                    //                 {/* {
+                    //                     console.log("thread dalem", item.UserName)
+                    //                 } */}
+                    //                 <h1>testing</h1>
+                    //             </div>
+                    //         )
+                    //     }
+
+                    // })
+                    // return (
+                    //     <>
+                    //         asd
+                    //     </>
+                    // )

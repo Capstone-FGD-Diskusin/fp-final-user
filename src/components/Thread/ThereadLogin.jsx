@@ -96,12 +96,11 @@ export default function ThereadLogin(props) {
         // index.preventDefault()
         await Axios.post(URL,
             {
-                data: {
-                    followed_id: index,
-                },
-                headers: { "Authorization": `Bearer ${token}` },
 
-            })
+                followed_id: index,
+            }, {
+            headers: { "Authorization": `Bearer ${token}` },
+        })
             .then(res => {
                 console.log(res);
                 // console.log(res.data.token);
@@ -183,14 +182,31 @@ export default function ThereadLogin(props) {
                                                             variant=""
                                                             className={style.butIkut}
                                                         // onClick={() => handleFollow(item.UserID)}
-                                                        >Berhenti Mengikuti
+                                                        >Mengikuti
                                                         </Button>
                                                     </h6>
                                                 </div>
                                             )
+                                            // {
+                                            //     state?.data.IDFollowed.filter(item2 => item2.Name != item.UserName).map((item2, index) => {
+
+                                            //         return (
+                                            //             <div>
+                                            //                 <h6 className={style.space3}>
+                                            //                     <Button
+                                            //                         variant=""
+                                            //                         className={style.butIkut2}
+                                            //                         onClick={() => handleFollow(item.UserID)}
+                                            //                     >Ikuti
+                                            //                     </Button>
+                                            //                 </h6>
+                                            //             </div>
+                                            //         )
+                                            //     })
+                                            // }
+
                                         })}
                                         {state?.data.IDFollowed.filter(item2 => item2.Name != item.UserName).map((item2, index) => {
-
                                             return (
                                                 <div>
                                                     <h6 className={style.space3}>

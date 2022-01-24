@@ -58,23 +58,22 @@ export default function OpenDiscuss() {
         let isTrue = false;
         const URL = `http://localhost:1234/thread`
         // event.preventDefault()
-        Axios.post(URL, {
+        await Axios.post(URL, {
+            title: data.title,
+            description: data.thread,
+            category_name: data.kategori,
+        }, {
             headers: { "Authorization": `Bearer ${token}` },
-            data: {
-                title: data.title,
-                description: data.thread,
-                category_name: data.kategori,
-            },
-
         })
             .then(res => {
-                console.log(res);
+                console.log("ini res", res);
                 // console.log(res.data.token);
                 // dispatch(setToken(res.data.token));
                 if (res) {
                     console.log("berhasil")
                     isTrue = true;
                 }
+
             }).catch(error => {
                 // this.setError()
                 console.log(error)
@@ -103,7 +102,7 @@ export default function OpenDiscuss() {
         if (isTrue) {
             console.log()
             // dispatch(login(res))
-            history("/Login");
+            history("/Login/HomeLogin");
             swal({
                 title: "Success",
                 text: "Input Thread Berhasil",
@@ -117,34 +116,35 @@ export default function OpenDiscuss() {
             });
             // e.preventDefault();
         }
-        //file.current.files
-        // console.log(file.current.files);
-        // const formData = new FormData();
-        // Object.values(file.current.files).forEach((item) => {
-        //     formData.append('file', item);
-        // });
-        // fetch(
-        //     `https://6141c998357db50017b3dd1b.mockapi.io/kampus_merdeka/upload`,
-        //     {
-        //         method: 'POST',
-        //         headers: {
-        //             'Content-Type': 'multipart/form-data',
-        //             Authorization: 'Bearer token...',
-        //         },
-        //         body: formData,
-        //     }
-        // )
-        //     .then((response) => {
-        //         return response.json();
-        //     })
-        //     .then((result) => {
-        //         console.log(result.name);
-        //         return result.fullName;
-        //     })
-        //     .catch((error) => {
-        //         return 'gagal';
-        //     });
     };
+    //file.current.files
+    // console.log(file.current.files);
+    // const formData = new FormData();
+    // Object.values(file.current.files).forEach((item) => {
+    //     formData.append('file', item);
+    // });
+    // fetch(
+    //     `https://6141c998357db50017b3dd1b.mockapi.io/kampus_merdeka/upload`,
+    //     {
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'multipart/form-data',
+    //             Authorization: 'Bearer token...',
+    //         },
+    //         body: formData,
+    //     }
+    // )
+    //     .then((response) => {
+    //         return response.json();
+    //     })
+    //     .then((result) => {
+    //         console.log(result.name);
+    //         return result.fullName;
+    //     })
+    //     .catch((error) => {
+    //         return 'gagal';
+    //     });
+
 
     return (
         <div>

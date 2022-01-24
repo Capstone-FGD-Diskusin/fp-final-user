@@ -100,13 +100,13 @@ export default function ThreadMengikutiContent(props) {
                                 <Row>
                                     <Col sm={6} className={style.posisi}>
                                         <FiIcons.FiUser size={25} />
-                                        {/* <h6 className={style.space2}>
-                                            {item.Name}
-                                            {console.log("ini state", state ? state : null)}
+                                        <h6 className={style.space2}>
+                                            {/* {item.Name} */}
+
                                             {
-                                                stateProfileData ? stateProfileData.data.data.Username : null
+                                                item ? item.UserName : null
                                             }
-                                        </h6> */}
+                                        </h6>
                                         <h6 className={style.space3}>
                                             <Button
                                                 variant=""

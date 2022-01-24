@@ -15,7 +15,7 @@ export default function HomeLogin() {
     const token = useSelector((state) => state.dataUser.token)
     let history = useNavigate();
 
-    const URL = `http://localhost:1234/user`
+    // const URL = `http://localhost:1234/user`
     // console.log("ini token", token);
     useEffect(() => {
         if (token == "") {

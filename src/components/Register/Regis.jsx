@@ -24,6 +24,7 @@ const dataRegis = {
     emailRegis: "",
     addressRegis: "",
     phoneRegis: "",
+    genderRegis: "",
 };
 
 export default function Regis() {
@@ -48,6 +49,9 @@ export default function Regis() {
                 username: data.usernameRegis,
                 password: data.passwordRegis,
                 email: data.emailRegis,
+                alamat: data.addressRegis,
+                gender: data.genderRegis,
+                phone: data.phoneRegis,
             })
             .then(res => {
                 console.log(res);
@@ -195,7 +199,7 @@ export default function Regis() {
                                     </InputGroup>
                                 </Form.Group>
                             </Row>
-                            {/* <Row className="mb-3">
+                            <Row className="mb-3">
                                 <Form.Group controlId="validationCustom03">
                                     <Form.Control
                                         onChange={handleChange}
@@ -224,7 +228,16 @@ export default function Regis() {
                                         Phone Number is Required
                                     </Form.Control.Feedback>
                                 </Form.Group>
-                            </Row> */}
+                            </Row>
+                            <Form.Select className={style.space3}
+                                onChange={handleChange}
+                                name="genderRegis"
+                                value={data.genderRegis}
+                            >
+                                <option>Gender</option>
+                                <option value="Laki-Laki">Laki-Laki</option>
+                                <option value="Perempuan">Perempuan</option>
+                            </Form.Select>
                             <Form.Group className="mb-3">
                                 <Form.Check
                                     required

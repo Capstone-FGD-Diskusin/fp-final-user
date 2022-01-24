@@ -30,6 +30,10 @@
     padding-top: 30px;
 }
 
+.space3 {
+    margin-bottom: 10px;
+}
+
 .text3:hover {
     color: blue;
 }
@@ -40,12 +44,12 @@
 }
 
 input[type=password] {
-    border: 2px solid rgba(255, 136, 52, 1);
+    /* border: 2px solid rgba(255, 136, 52, 1); */
     border-radius: 4px;
 }
 
 input[type=number] {
-    border: 2px solid rgba(255, 136, 52, 1);
+    /* border: 2px solid rgba(255, 136, 52, 1); */
     border-radius: 4px;
 }
 

@@ -16,6 +16,8 @@ import { PersistGate } from 'redux-persist/lib/integration/react';
 import { persistor, store } from "./store/store";
 import Kategori from "./pages/Kategori/Kategori";
 import ThreadMengikuti from "./pages/ThreadMengikuti/ThreadMengikuti";
+import ProfileEdit from "./pages/ProfileEdit/ProfileEdit";
+import Message from "./pages/Message/Message";
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -33,7 +35,10 @@ function App() {
           <Route path="/CekLogin" element={<CekLogin/>}/>
           {/* <PrivateRoute/> */}
           <Route path="/Login/HomeLogin/Profile/:id/" element={<Profile/>}/>
+          <Route path="/Login/HomeLogin/Profile/:id/Edit" element={<ProfileEdit/>}/>
           <Route path="/Login/HomeLogin" element={<HomeLogin/>}/>
+          <Route path="/Login/HomeLogin/Message" element={<Message/>}/>
+          <Route path="/Login/HomeLogin/Comment/:id" element={<HomeLogin/>}/>
           <Route path="/Login/HomeLogin/Mengikuti" element={<ThreadMengikuti/>}/>
           {/* <Route path="/Login/HomeLogin:id" element={<HomeLogin/>}/> */}
           <Route path="/Login/HomeLogin/Peringkat" element={<Peringkat/>}/>

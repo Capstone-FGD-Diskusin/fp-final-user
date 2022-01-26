@@ -1,28 +1,29 @@
- import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Axios from 'axios';
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import swal from 'sweetalert';
 
-export default function GetFollowed() {
-    const [Followedstate,setState] = useState(null)
-    
+export default function ThreadComment() {
+    const { id } = useParams()
+    console.log(id ? id : null);
+    const [dataComment, setState] = useState(null)
+
     const token = useSelector((state) => state.dataUser.token)
-    const URL = `http://localhost:1234/user/followed`
+    const URL = `http://localhost:1234/thread/comment/1/balasan`
     let history = useNavigate();
 
     const getData = async () => {
-        Axios.get(URL, {
-            headers: { "Authorization": `Bearer ${token}` }
-        })
+        // const URL = `http://localhost:1234/thread/comment/` + id + `/balasan`
+        Axios.get(URL)
             .then(res => {
-                console.log(res);
+                console.log("ini res", res);
                 setState(res)
-                
+
                 // setProfile(res.data.data);
                 if (res.data.token) {
                     console.log("berhasil")
-                    
+
                 }
             }).catch(error => {
                 // this.setError()
@@ -65,5 +66,19 @@ export default function GetFollowed() {
         }
     },
         []);
-        return {Followedstate , getData}
+
+    // console.log(dataComment ? dataComment?.data.data : null);
+    return (
+        <>
+            {
+                dataComment?.data.data.filter(item => item.ThreadID == id).map((item, index) => {
+                    return (
+                        <div>
+                            {console.log("berhasil", item.Comment)}
+                        </div>
+                    )
+                })
+            }
+        </>
+    )
 }

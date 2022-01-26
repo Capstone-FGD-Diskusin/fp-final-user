@@ -1,11 +1,11 @@
 import React from 'react'
-import { Container, Row, Col, Image } from 'react-bootstrap'
+import { Container, Row, Col, Image, Button } from 'react-bootstrap'
 import style from "./ProfileContent.module.css"
 import * as FiIcons from 'react-icons/fi';
 import * as FaIcons from 'react-icons/fa';
 import * as BiIcons from 'react-icons/bi';
 import gambar from "../../img/bintang.png"
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { ThreadLoginData } from '../Thread/ThreadLoginData';
 import ThereadLogin from '../Thread/ThereadLogin';
 import ThereadProfile from './ThreadProfile';
@@ -18,7 +18,7 @@ import GetFollowed from '../../Hooks/GET/GetFollowed';
 export default function ProfileContent(props) {
     const { state } = GetFollowing(props)
     const state2 = GetFollowed(props)
-
+    const { id } = useParams();
     const stateData = GetProfileData(props)
     const i = 1
 
@@ -128,6 +128,11 @@ export default function ProfileContent(props) {
                                 </Link>
                             </Col>
                         </Row>
+                        <Button size="lg" className={style.editProf}>
+                            <Link to={`/Login/HomeLogin/Profile/${id}/Edit`} className={style.linkEdit}>
+                                <h6>Lihat Profile</h6>
+                            </Link>
+                        </Button>
                     </Col>
                 </Row>
                 <Row>

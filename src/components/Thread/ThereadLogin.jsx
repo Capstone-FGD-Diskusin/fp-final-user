@@ -7,7 +7,7 @@ import * as FcIcons from 'react-icons/fc';
 import gambar from "../../img/Spiderman.png"
 import gambar2 from "../../img/love.png"
 import { ThreadLoginData } from './ThreadLoginData';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import ThreadBalas from './ThreadBalas';
 import GetUserID from '../../Hooks/GET/GetUserID';
 import { useSelector } from 'react-redux'
@@ -16,6 +16,9 @@ import swal from 'sweetalert';
 import GetProfileData from '../../Hooks/GET/GetProfileData';
 import GetAllThread from '../../Hooks/GET/GetAllThread';
 import GetFollowing from '../../Hooks/GET/GetFollowing';
+import { useState } from 'react';
+import ThreadComment from './ThreadComent';
+import { useEffect } from 'react';
 
 export default function ThereadLogin(props) {
     let history = useNavigate();
@@ -154,11 +157,88 @@ export default function ThereadLogin(props) {
 
     }
 
+    const [show, setShow] = useState(false);
+    const { id } = useParams()
+    const handleClose = () => setShow(false);
+    // const HandleShow = () => {
+    //     state2?.data.data.filter(item => item.ID == id) ? setShow(true) : setShow(false)
+
+    // };
+
+    const HandleShow = (e) => {
+        if (e == 1) {
+            setShow(true)
+        }
+
+    }
+
+
+
+    const [dataComment, setState] = useState(null)
+
+    // const HandleShow = () => {
+    //     setShow(true);
+    //     useEffect(() => {
+    //         if (1 == 1) {
+
+    //             const getData = async () => {
+    //                 const URL = `http://localhost:1234/thread/comment/` + id + `/balasan`
+    //                 Axios.get(URL)
+    //                     .then(res => {
+    //                         console.log(res);
+    //                         setState(res)
+
+    //                         // setProfile(res.data.data);
+    //                         if (res.data.token) {
+    //                             console.log("berhasil")
+
+    //                         }
+    //                     }).catch(error => {
+    //                         // this.setError()
+    //                         console.log(error)
+    //                         if (error.response) {
+    //                             console.log("--------------------------------------------------")
+    //                             // The request was made and the server responded with a status code
+    //                             // that falls out of the range of 2xx
+    //                             console.log(error.response.data);
+    //                             console.log(error.response.status);
+    //                             if (error.response.status === 401) {
+    //                                 history("/Login");
+    //                                 swal({
+    //                                     title: "Error",
+    //                                     text: "Mohon Login Terlebih Dahulu",
+    //                                     icon: "error",
+    //                                 });
+    //                             }
+    //                             console.log(error.response.headers);
+    //                         } else if (error.request) {
+    //                             console.log("*************************")
+
+    //                             // The request was made but no response was received
+    //                             // error.request is an instance of XMLHttpRequest in the browser and an instance of
+    //                             // http.ClientRequest in node.js
+    //                             console.log(error.request);
+    //                         } else {
+    //                             console.log("++++++++++++++++++++++++")
+    //                             // Something happened in setting up the request that triggered an Error
+    //                             console.log('Error', error.message);
+    //                         }
+    //                         console.log(error.config);
+    //                     })
+    //             }
+    //             getData();
+    //         }
+    //     },
+    //         []);
+    // }
+
+
+
     return (
         <>
             <div className={style.space}>
                 {state2?.data.data.map((item, index) => {
-                    console.log("ini item", item);
+                    // console.log("ini item", item);
                     return (
                         <div key={index}>
                             <Container className={style.space7}>
@@ -172,10 +252,8 @@ export default function ThereadLogin(props) {
                                                 item ? item.UserName : null
                                             }
                                         </h6>
-
-                                        {state?.data.IDFollowed.filter(item2 => item2.Name == item.UserName).map((item2, index) => {
-
-                                            return (
+                                        {
+                                            state?.data.IDFollowed.find(item2 => item2.Name == item.UserName) ?
                                                 <div>
                                                     <h6 className={style.space3}>
                                                         <Button
@@ -185,29 +263,7 @@ export default function ThereadLogin(props) {
                                                         >Mengikuti
                                                         </Button>
                                                     </h6>
-                                                </div>
-                                            )
-                                            // {
-                                            //     state?.data.IDFollowed.filter(item2 => item2.Name != item.UserName).map((item2, index) => {
-
-                                            //         return (
-                                            //             <div>
-                                            //                 <h6 className={style.space3}>
-                                            //                     <Button
-                                            //                         variant=""
-                                            //                         className={style.butIkut2}
-                                            //                         onClick={() => handleFollow(item.UserID)}
-                                            //                     >Ikuti
-                                            //                     </Button>
-                                            //                 </h6>
-                                            //             </div>
-                                            //         )
-                                            //     })
-                                            // }
-
-                                        })}
-                                        {state?.data.IDFollowed.filter(item2 => item2.Name != item.UserName).map((item2, index) => {
-                                            return (
+                                                </div> :
                                                 <div>
                                                     <h6 className={style.space3}>
                                                         <Button
@@ -218,11 +274,7 @@ export default function ThereadLogin(props) {
                                                         </Button>
                                                     </h6>
                                                 </div>
-                                            )
-                                        })}
-
-
-
+                                        }
 
                                     </Col>
                                     <Col sm={3}></Col>
@@ -278,119 +330,71 @@ export default function ThereadLogin(props) {
                                             <h6 className={style.space8}>
                                                 {item ? item.Like : null}
                                             </h6>
-                                            <Link to={`/Login/HomeLogin/${item.ID}/Comment`} className={style.space9}>
+                                            <Link to={`/Login/HomeLogin/${index}/Comment`} className={style.space9}>
                                                 <BiIcons.BiCommentDetail size={20} className={style.space10} />
                                             </Link>
                                             <h6 className={style.space8}>
-                                                {/* <Link to={`/Login/HomeLogin/${item.Id}`}><ThreadBalas /></Link> */}
-                                                {/* <ThreadBalas Id={index} />
-                                                <Accordion>
-                                                    <Accordion.Item eventKey="0">
-                                                        <Accordion.Header>1</Accordion.Header>
-                                                        <Accordion.Body>
-                                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                                            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                                            commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                                                            velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                                                            cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-                                                            est laborum.
-                                                        </Accordion.Body>
-                                                    </Accordion.Item>
-                                                </Accordion> */}
-                                                {item ? item.JumlahComment : null}
+
+                                                <Link to={`/Login/HomeLogin/Comment/${item.ID}`}>
+                                                    <button onClick={() => HandleShow(item.ID)}>
+                                                        {item ? item.JumlahComment : null}
+                                                    </button>
+                                                </Link>
+
+
                                             </h6>
+
                                             <FiIcons.FiShare2 className={style.space11} />
 
                                         </div>
                                         <Link to={`/Login/HomeLogin/${item.CategoryName}`} className={style.text}>
                                             <h6 >
                                                 {item ? item.CategoryName : null}
-                                            </h6></Link>
+                                            </h6>
+                                        </Link>
+
                                     </Col>
                                 </Row>
+
+                                {
+                                    show ?
+                                        <div >
+                                            <ThreadComment />
+                                            {/* {getData()} */}
+                                            benar {item.ID}
+                                        </div>
+
+                                        : <div>salah</div>
+                                    //     state2?.data.data.filter(item => item.ID == id)map((item, index)=>{
+                                    //     return()
+                                    // })
+                                    // state2?.data.data.filter(item => item.ID == id).map((item, index) => {
+                                    //         return (
+
+                                    //     )
+                                    //     })
+
+                                }
                             </Container>
+                            {console.log(state2?.data.data.find(item => item.ID == id))}
+                            {/* <Container show={show} onHide={handleClose}>
+                                <div>1234567890</div>
+                            </Container> */}
 
                         </div>
                     )
                 })}
+
+
             </div>
         </>
     )
-    // return (
-    //     <>
-    //         <div>
-    //             <h1>LOREMOEJISDHAIDGIB,</h1>
-    //             {
-    //                 state2?.data.data.map((item, index) => {
-
-    //                     return (
-    //                         <div key={index}>
-    //                             ==============================================
-    //                             {
-    //                                 console.log("ini", state2 ? state2?.data.data : null)
-    //                             }
-
-    // {state?.data.IDFollowed.filter(item2 => item2.Name == item.UserName).map((item2, index) => {
-
-    //     return (
-    //         <div>
-    //             COcok
-    //         </div>
-    //     )
-    // })}
-    // {state?.data.IDFollowed.filter(item2 => item2.Name != item.UserName).map((item2, index) => {
-
-    //     return (
-    //         <div>
-    //             Engga
-    //         </div>
-    //     )
-    // })}
-    //                             {/* {
-    //                                 item ? item.UserName : null
-    //                             } */}
-    //                         </div>
-    //                     )
-    //                 })
-
-    //             }
-
-    //         </div>
-    //     </>
-    // )
 }
 
-
-                    // state?.data.IDFollowed.map((item2, index2) => {
-                    //     console.log("following", state?.data.IDFollowed);
-                    //     console.log("thread", state2?.data.data);
-                    //     if (item2.Name == item.UserName) {
-                    //         return (
-                    //             <div key={index}>
-                    //                 asd
-                    //                 {/* {
-                    //                     console.log("thread dalem", item.UserName)
-                    //                 } */}
-                    //                 <h1>testing</h1>
-                    //             </div>
-                    //         )
-                    //     } else if (item2.Name != item.UserName) {
-                    //         return (
-                    //             <div key={index}>
-                    //                 asd
-                    //                 {item ? item.UserName : null}
-                    //                 {/* {
-                    //                     console.log("thread dalem", item.UserName)
-                    //                 } */}
-                    //                 <h1>testing</h1>
-                    //             </div>
-                    //         )
-                    //     }
-
-                    // })
-                    // return (
-                    //     <>
-                    //         asd
-                    //     </>
-                    // )
+function test() {
+    return (
+        <div>
+            asdsa
+        </div>
+    )
+}

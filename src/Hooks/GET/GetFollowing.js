@@ -16,7 +16,7 @@ export default function GetFollowing() {
             headers: { "Authorization": `Bearer ${token}` }
         })
             .then(res => {
-                console.log(res);
+                // console.log(res);
                 setState(res)
                 
                 // setProfile(res.data.data);

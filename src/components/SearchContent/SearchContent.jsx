@@ -7,7 +7,7 @@ import GetAllCategory from '../../Hooks/GET/GetAllCategory'
 
 export default function SearchContent(props) {
     const stateCategory = GetAllCategory(props)
-    console.log("ini kategori", stateCategory ? stateCategory : null);
+    // console.log("ini kategori", stateCategory ? stateCategory : null);
 
     return (
         <div className={style.space3}>

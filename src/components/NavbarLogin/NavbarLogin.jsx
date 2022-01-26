@@ -15,7 +15,7 @@ import GetProfileData from '../../Hooks/GET/GetProfileData';
 export default function NavbarLogin(props) {
     const stateProfileData = GetProfileData(props)
     const id = stateProfileData?.data.data.ID
-    console.log(id);
+    // console.log(id);
     const [isDown, setIsDown] = useState(false);
     const setDown = () => {
         setIsDown(!isDown)
@@ -57,8 +57,12 @@ export default function NavbarLogin(props) {
                                 title={<FiIcons.FiSettings size={20} />}
 
                             >
-                                <Dropdown.Item href="#">Settings</Dropdown.Item>
-                                <Dropdown.Item href="#">testing</Dropdown.Item>
+                                <Dropdown.Item >
+                                    <Link className={style.linkN} to={`/Login/HomeLogin/Message`}>Send Message</Link>
+                                </Dropdown.Item>
+                                <Dropdown.Item >
+                                    <Link className={style.linkN} to={`/Login/HomeLogin/Profile/${id}/Edit`}>Settings</Link>
+                                </Dropdown.Item>
                                 <Dropdown.Divider />
                                 <Dropdown.Item href="#">Logout</Dropdown.Item>
                             </DropdownButton>

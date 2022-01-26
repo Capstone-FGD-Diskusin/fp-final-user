@@ -1,0 +1,45 @@
+.mid {
+    text-align: center;
+    align-items: center;
+    align-content: center;
+}
+
+.space {
+    margin-top: 20px;
+}
+
+.space2 {
+    margin-top: 20px;
+}
+
+.text {
+    text-align: center;
+    font-weight: bolder;
+}
+
+.text2 {
+    display: flex;
+    flex-direction: row;
+
+    /* justify-content: space-around; */
+}
+
+.back {
+    background: rgba(255, 255, 255, 0.466);
+    /* color: green; */
+    border-radius: 100px;
+    background: #F4F5F4;
+}
+
+.midBut {
+
+    display: flex;
+    gap: 1rem;
+    place-items: center;
+    justify-content: center;
+    /* align-items: center; */
+}
+
+.posisi {
+    display: flex;
+}

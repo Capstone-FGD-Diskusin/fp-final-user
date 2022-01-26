@@ -6,9 +6,12 @@ import * as FaIcons from 'react-icons/fa';
 import * as BiIcons from 'react-icons/bi';
 import { Peringkat } from './Peringkat';
 import gambar1 from "../../img/bintang.png"
+import GetAllRangking from '../../Hooks/GET/GetAllRangking';
 
 
-export default function PeringkatContent() {
+export default function PeringkatContent(props) {
+    const state = GetAllRangking(props)
+    console.log("state", state ? state.data : null);
     return (
         <div>
 

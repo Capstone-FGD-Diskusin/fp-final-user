@@ -129,12 +129,14 @@ export default function ThreadProfile(props) {
     return (
         <>
             <div className={style.space}>
-                {
-                    state?.data.data.map((item, index) => {
-                        // console.log("ini ThreadeState", threadState);
-                        return (
-                            <div key={index}>
-                                <Container className={style.space7}>
+                <Container className={style.space7}>
+                    <h4 className={style.spaceThread}> Thread Anda</h4>
+                    {
+                        state?.data.data.map((item, index) => {
+                            // console.log("ini ThreadeState", threadState);
+                            return (
+                                <div key={index}>
+
                                     <Row>
                                         <Col sm={6} className={style.posisi}>
                                             <FiIcons.FiUser size={25} />
@@ -202,12 +204,12 @@ export default function ThreadProfile(props) {
                                                 className={style.text}><h6 >{item.CategoryName}</h6></Link>
                                         </Col>
                                     </Row>
-                                </Container>
-                            </div>
-                        )
-                    })
-                }
 
+                                </div>
+                            )
+                        })
+                    }
+                </Container>
             </div>
 
 

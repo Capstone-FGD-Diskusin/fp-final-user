@@ -61,3 +61,19 @@
 .img {
     margin-top: 4px;
 }
+
+.editProf {
+    margin-top: 10px;
+    background-color: #FF8834;
+    border: #FF8834;
+}
+
+.linkEdit {
+    color: white;
+    text-decoration: none;
+}
+
+.linkEdit:hover {
+    color: white;
+    text-decoration: none;
+}

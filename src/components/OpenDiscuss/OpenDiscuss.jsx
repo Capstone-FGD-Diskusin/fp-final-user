@@ -10,11 +10,13 @@ import { useState, } from 'react';
 import { useSelector } from 'react-redux'
 import Axios from 'axios';
 import swal from 'sweetalert';
+import GetAllCategory from '../../Hooks/GET/GetAllCategory';
 
 import MyVerticallyCenteredModal from './PopUp';
 import { SearchKategori } from '../SearchContent/SearchKategori';
 
-export default function OpenDiscuss() {
+export default function OpenDiscuss(props) {
+    const state = GetAllCategory(props)
     const token = useSelector((state) => state.dataUser.token)
     const file = useRef(null);
 
@@ -194,13 +196,16 @@ export default function OpenDiscuss() {
                                         value={data.kategori}
                                     >
                                         <option>Kategori</option>
-                                        <option value="Hiburan">Hiburan</option>
-                                        <option value="Politik">Politik</option>
-                                        <option value="Gaya Hidup">Gaya Hidup</option>
-                                        <option value="Kesehatan mental">Kesehatan mental</option>
-                                        <option value="Olahraga">Olahraga</option>
-                                        <option value="Game">Game</option>
+                                        {
+                                            state?.data.data.map((item, index) => {
+                                                return (
+                                                    <>
 
+                                                        <option value={item ? item.Name : null}>{item ? item.Name : null}</option>
+                                                    </>
+                                                )
+                                            })
+                                        }
                                     </Form.Select>
 
                                     {/* <MyVerticallyCenteredModal props={data} /> */}

@@ -16,11 +16,11 @@ export default function ThreadComment(props) {
 
 
     const token = useSelector((state) => state.dataUser.token)
-    const URL = `http://localhost:1234/thread/comment/1/balasan`
+    const URL = `http://34.101.171.217:1234/thread/comment/1/balasan`
     let history = useNavigate();
 
     const getData = async () => {
-        // const URL = `http://localhost:1234/thread/comment/` + id + `/balasan`
+        // const URL = `http://34.101.171.217:1234/thread/comment/` + id + `/balasan`
         Axios.get(URL)
             .then(res => {
                 // console.log("ini res", res);

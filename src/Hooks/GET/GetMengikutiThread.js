@@ -8,7 +8,7 @@ export default function GeMengikutiThread() {
     const [state,setState] = useState(null)
     
     const token = useSelector((state) => state.dataUser.token)
-    const URL = `http://localhost:1234/thread/homepage`
+    const URL = `http://34.101.171.217:1234/thread/homepage`
     let history = useNavigate();
 
     useEffect(() => {

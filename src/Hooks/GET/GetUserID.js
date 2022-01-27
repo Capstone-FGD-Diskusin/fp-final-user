@@ -8,7 +8,7 @@ export default function GetUserID() {
     const [state,setState] = useState(null)
     
     const token = useSelector((state) => state.dataUser.token)
-    const URL = `http://localhost:1234/user/:id`
+    const URL = `http://34.101.171.217:1234/user/:id`
     let history = useNavigate();
 
     useEffect(() => {

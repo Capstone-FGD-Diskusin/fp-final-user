@@ -30,7 +30,7 @@ export default function ThreadFavorite(props) {
     let history = useNavigate();
 
     const handleDelete = (index) => {
-        const URLDEL = `http://localhost:1234/user/thread/follow`
+        const URLDEL = `http://34.101.171.217:1234/user/thread/follow`
         Axios.delete(URLDEL, {
             headers: { "Authorization": `Bearer ${token}` },
         })
@@ -75,7 +75,7 @@ export default function ThreadFavorite(props) {
 
 
     const getData = async () => {
-        const URLFav = `http://localhost:1234/user/favorite`
+        const URLFav = `http://34.101.171.217:1234/user/favorite`
         Axios.get(URLFav, {
             headers: { "Authorization": `Bearer ${token}` }
         })

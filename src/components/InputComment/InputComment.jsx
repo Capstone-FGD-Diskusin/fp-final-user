@@ -46,7 +46,7 @@ export default function InputComment(props) {
         // console.log(token);
 
         let isTrue = false;
-        const URL = `http://localhost:1234/thread/comment`
+        const URL = `http://34.101.171.217:1234/thread/comment`
         // event.preventDefault()
         await Axios.post(URL, {
             comment: data.Balasan,

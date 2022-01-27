@@ -25,12 +25,12 @@ export default function PengikutContent(props) {
 
     const token = useSelector((state) => state.dataUser.token)
     let history = useNavigate();
-    const URL = `http://localhost:1234/user/followed`
+    const URL = `http://34.101.171.217:1234/user/followed`
 
     const handleFollow = async (index) => {
         // console.log("ini index", index);
         let isTrue = false;
-        const URL2 = `http://localhost:1234/user/follow`
+        const URL2 = `http://34.101.171.217:1234/user/follow`
         // index.preventDefault()
         await Axios.post(URL2,
             {

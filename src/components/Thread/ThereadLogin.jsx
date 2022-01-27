@@ -33,7 +33,7 @@ export default function ThereadLogin(props) {
     const handleUnlike = async (index) => {
         let isTrue = false;
         console.log("ini index", index);
-        const URL = `http://localhost:1234/like`
+        const URL = `http://34.101.171.217:1234/like`
         await Axios.delete(URL, {
             headers: { "Authorization": `Bearer ${token}` },
             data:
@@ -98,7 +98,7 @@ export default function ThereadLogin(props) {
     const handleSave = async (index) => {
         let isTrue = false;
         console.log("ini index", index);
-        const URL = `http://localhost:1234/like`
+        const URL = `http://34.101.171.217:1234/like`
         await Axios.post(URL, {
             thread_id: index,
         }, {
@@ -160,7 +160,7 @@ export default function ThereadLogin(props) {
     const handleLike = async (index) => {
         let isTrue = false;
         console.log("ini index", index);
-        const URL = `http://localhost:1234/like`
+        const URL = `http://34.101.171.217:1234/like`
         await Axios.post(URL, {
             thread_id: index,
         }, {
@@ -222,7 +222,7 @@ export default function ThereadLogin(props) {
     const handleFollow = async (index) => {
         console.log("ini index", index);
         let isTrue = false;
-        const URL = `http://localhost:1234/user/follow`
+        const URL = `http://34.101.171.217:1234/user/follow`
         // index.preventDefault()
         await Axios.post(URL,
             {

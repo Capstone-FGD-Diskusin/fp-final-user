@@ -9,13 +9,13 @@ export default function GetAllFavorite() {
     const [state,setState] = useState(null)
     
     const token = useSelector((state) => state.dataUser.token)
-    const URL = `http://localhost:1234/user/favorite`
+    const URL = `http://34.101.171.217:1234/user/favorite`
     let history = useNavigate();
 
     useEffect(() => {
         if (token) {
             const getData = async () => {
-                const URL = `http://localhost:1234/user/favorite`
+                const URL = `http://34.101.171.217:1234/user/favorite`
                 Axios.get(URL, {
                     headers: { "Authorization": `Bearer ${token}` }
                 })

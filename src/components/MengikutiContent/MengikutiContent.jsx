@@ -21,7 +21,7 @@ export default function MengikutiContent(props) {
 
     const token = useSelector((state) => state.dataUser.token)
     let history = useNavigate();
-    const URL = `http://localhost:1234/user/follow`
+    const URL = `http://34.101.171.217:1234/user/follow`
 
     const handleDelete = (index) => {
         // const newData = Data.filter((e, i) => {

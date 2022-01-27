@@ -8,7 +8,7 @@ export default function GetFollowing() {
     const [state,setState] = useState(null)
     
     const token = useSelector((state) => state.dataUser.token)
-    const URL = `http://localhost:1234/user/following`
+    const URL = `http://34.101.171.217:1234/user/following`
     let history = useNavigate();
 
     const getData = async () => {

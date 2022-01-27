@@ -17,7 +17,7 @@ import { useSelector } from 'react-redux'
 import Axios from 'axios';
 import swal from 'sweetalert';
 
-export default function ThreadProfile(props) {
+export default function ThreadFavorite(props) {
     const stateProfileData = GetProfileData(props)
 
     const token = useSelector((state) => state.dataUser.token)
@@ -30,7 +30,7 @@ export default function ThreadProfile(props) {
     let history = useNavigate();
 
     const handleDelete = (index) => {
-        const URLDEL = `http://localhost:1234/thread/` + index + ``
+        const URLDEL = `http://localhost:1234/user/thread/follow`
         Axios.delete(URLDEL, {
             headers: { "Authorization": `Bearer ${token}` },
         })
@@ -73,15 +73,20 @@ export default function ThreadProfile(props) {
             })
     }
 
+
     const getData = async () => {
-        Axios.get(URL)
+        const URLFav = `http://localhost:1234/user/favorite`
+        Axios.get(URLFav, {
+            headers: { "Authorization": `Bearer ${token}` }
+        })
             .then(res => {
-                // console.log("ini res", res);
+                // console.log("berhasil", res);
                 setState(res)
+
 
                 // setProfile(res.data.data);
                 if (res.data.token) {
-                    // console.log("berhasil")
+                    console.log("berhasil")
 
                 }
             }).catch(error => {
@@ -117,20 +122,22 @@ export default function ThreadProfile(props) {
                 console.log(error.config);
             })
     }
+
     useEffect(() => {
-        if (i == 0) {
+        if (token) {
             getData();
         }
-
-        // console.log(profile)
-
     }, []);
 
     return (
+
         <>
             <div className={style.space}>
                 <Container className={style.space7}>
                     <h4 className={style.spaceThread}> Thread Anda</h4>
+                    {
+                        console.log("ini state", state ? state : null)
+                    }
                     {
                         state?.data.data.map((item, index) => {
                             // console.log("ini ThreadeState", threadState);
@@ -143,12 +150,11 @@ export default function ThreadProfile(props) {
                                             <h6 className={style.space2}>
 
                                                 {
-                                                    stateProfileData ? stateProfileData.data.data.Username : null
+                                                    item ? item.UserName : null
                                                 }
 
                                             </h6>
                                             <div className={style.space12}>
-                                                <button className={style.butEdit}>Edit</button>
                                                 <button
                                                     className={style.butDel}
                                                     onClick={() => handleDelete(item.ID)}

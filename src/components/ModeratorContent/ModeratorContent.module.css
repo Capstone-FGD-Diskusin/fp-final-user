@@ -1,6 +1,4 @@
-.kanan {
-    text-align: right;
-}
+.kanan {}
 
 .space {
     margin-top: 75px;
@@ -13,6 +11,7 @@
 .box2 {
     text-decoration: none;
     color: black;
+    text-align: right;
 }
 
 .box2:hover {

@@ -4,6 +4,7 @@ import style from "./ThereadLogin.module.css"
 import * as FiIcons from 'react-icons/fi';
 import * as BiIcons from 'react-icons/bi';
 import * as FcIcons from 'react-icons/fc';
+import * as IoIcons from 'react-icons/io5';
 import gambar from "../../img/Spiderman.png"
 import gambar2 from "../../img/love.png"
 import { ThreadLoginData } from './ThreadLoginData';
@@ -26,19 +27,21 @@ export default function ThereadLogin(props) {
 
     const state2 = GetAllThread(props)
     // console.log("ini", state ? state.data.data : null);
-    const { state } = GetFollowing(props)
+    const { state, getData } = GetFollowing(props)
     // console.log("ini state", state ? state.data.IDFollowed : null);
 
-    const handleLike = async (index) => {
+    const handleUnlike = async (index) => {
         let isTrue = false;
+        console.log("ini index", index);
         const URL = `http://localhost:1234/like`
-        await Axios.post(URL,
+        await Axios.delete(URL, {
+            headers: { "Authorization": `Bearer ${token}` },
+            data:
             {
-                headers: { "Authorization": `Bearer ${token}` },
-                data: {
-                    thread_id: index,
-                }
-            })
+                thread_id: index,
+            }
+
+        })
             .then(res => {
                 console.log(res);
                 // console.log(res.data.token);
@@ -76,18 +79,142 @@ export default function ThereadLogin(props) {
             console.log()
             // dispatch(login(res))
             history("/Login/HomeLogin");
-            swal({
-                title: "Success",
-                text: "Register Berhasil",
-                icon: "success",
-            });
-        } else {
-            return swal({
-                title: "Error",
-                text: "Password atau Email salah",
-                icon: "error",
-            });
-            // e.preventDefault();
+            // swal({
+            //     title: "Success",
+            //     text: "Register Berhasil",
+            //     icon: "success",
+            // });
+            // } else {
+            //     return swal({
+            //         title: "Error",
+            //         text: "Password atau Email salah",
+            //         icon: "error",
+            //     });
+
+        }
+
+    }
+
+    const handleSave = async (index) => {
+        let isTrue = false;
+        console.log("ini index", index);
+        const URL = `http://localhost:1234/like`
+        await Axios.post(URL, {
+            thread_id: index,
+        }, {
+            headers: { "Authorization": `Bearer ${token}` },
+        })
+            .then(res => {
+                console.log(res);
+                // console.log(res.data.token);
+                // dispatch(setToken(res.data.token));
+                if (res) {
+                    console.log("berhasil")
+                    isTrue = true;
+                }
+            }).catch(error => {
+                // this.setError()
+                console.log(error)
+                if (error.response) {
+                    console.log("--------------------------------------------------")
+                    // The request was made and the server responded with a status code
+                    // that falls out of the range of 2xx
+                    console.log(error.response.data);
+                    console.log(error.response.status);
+                    console.log(error.response.headers);
+                } else if (error.request) {
+                    console.log("*************************")
+
+                    // The request was made but no response was received
+                    // error.request is an instance of XMLHttpRequest in the browser and an instance of
+                    // http.ClientRequest in node.js
+                    console.log(error.request);
+                } else {
+                    console.log("++++++++++++++++++++++++")
+                    // Something happened in setting up the request that triggered an Error
+                    console.log('Error', error.message);
+                }
+                console.log(error.config);
+            })
+
+        if (isTrue) {
+            console.log()
+            // dispatch(login(res))
+            history("/Login/HomeLogin");
+            // swal({
+            //     title: "Success",
+            //     text: "Register Berhasil",
+            //     icon: "success",
+            // });
+            // } else {
+            //     return swal({
+            //         title: "Error",
+            //         text: "Password atau Email salah",
+            //         icon: "error",
+            //     });
+
+        }
+
+    }
+
+    const handleLike = async (index) => {
+        let isTrue = false;
+        console.log("ini index", index);
+        const URL = `http://localhost:1234/like`
+        await Axios.post(URL, {
+            thread_id: index,
+        }, {
+            headers: { "Authorization": `Bearer ${token}` },
+        })
+            .then(res => {
+                console.log(res);
+                // console.log(res.data.token);
+                // dispatch(setToken(res.data.token));
+                if (res) {
+                    console.log("berhasil")
+                    isTrue = true;
+                }
+            }).catch(error => {
+                // this.setError()
+                console.log(error)
+                if (error.response) {
+                    console.log("--------------------------------------------------")
+                    // The request was made and the server responded with a status code
+                    // that falls out of the range of 2xx
+                    console.log(error.response.data);
+                    console.log(error.response.status);
+                    console.log(error.response.headers);
+                } else if (error.request) {
+                    console.log("*************************")
+
+                    // The request was made but no response was received
+                    // error.request is an instance of XMLHttpRequest in the browser and an instance of
+                    // http.ClientRequest in node.js
+                    console.log(error.request);
+                } else {
+                    console.log("++++++++++++++++++++++++")
+                    // Something happened in setting up the request that triggered an Error
+                    console.log('Error', error.message);
+                }
+                console.log(error.config);
+            })
+
+        if (isTrue) {
+            console.log()
+            // dispatch(login(res))
+            history("/Login/HomeLogin");
+            // swal({
+            //     title: "Success",
+            //     text: "Register Berhasil",
+            //     icon: "success",
+            // });
+            // } else {
+            //     return swal({
+            //         title: "Error",
+            //         text: "Password atau Email salah",
+            //         icon: "error",
+            //     });
+
         }
 
     }
@@ -105,6 +232,7 @@ export default function ThereadLogin(props) {
             headers: { "Authorization": `Bearer ${token}` },
         })
             .then(res => {
+                getData()
                 console.log(res);
                 // console.log(res.data.token);
                 // dispatch(setToken(res.data.token));
@@ -166,71 +294,12 @@ export default function ThereadLogin(props) {
     // };
 
     const HandleShow = (e) => {
-        if (e == 1) {
-            setShow(true)
-        }
-
+        setShow(e)
     }
 
 
 
     const [dataComment, setState] = useState(null)
-
-    // const HandleShow = () => {
-    //     setShow(true);
-    //     useEffect(() => {
-    //         if (1 == 1) {
-
-    //             const getData = async () => {
-    //                 const URL = `http://localhost:1234/thread/comment/` + id + `/balasan`
-    //                 Axios.get(URL)
-    //                     .then(res => {
-    //                         console.log(res);
-    //                         setState(res)
-
-    //                         // setProfile(res.data.data);
-    //                         if (res.data.token) {
-    //                             console.log("berhasil")
-
-    //                         }
-    //                     }).catch(error => {
-    //                         // this.setError()
-    //                         console.log(error)
-    //                         if (error.response) {
-    //                             console.log("--------------------------------------------------")
-    //                             // The request was made and the server responded with a status code
-    //                             // that falls out of the range of 2xx
-    //                             console.log(error.response.data);
-    //                             console.log(error.response.status);
-    //                             if (error.response.status === 401) {
-    //                                 history("/Login");
-    //                                 swal({
-    //                                     title: "Error",
-    //                                     text: "Mohon Login Terlebih Dahulu",
-    //                                     icon: "error",
-    //                                 });
-    //                             }
-    //                             console.log(error.response.headers);
-    //                         } else if (error.request) {
-    //                             console.log("*************************")
-
-    //                             // The request was made but no response was received
-    //                             // error.request is an instance of XMLHttpRequest in the browser and an instance of
-    //                             // http.ClientRequest in node.js
-    //                             console.log(error.request);
-    //                         } else {
-    //                             console.log("++++++++++++++++++++++++")
-    //                             // Something happened in setting up the request that triggered an Error
-    //                             console.log('Error', error.message);
-    //                         }
-    //                         console.log(error.config);
-    //                     })
-    //             }
-    //             getData();
-    //         }
-    //     },
-    //         []);
-    // }
 
 
 
@@ -252,8 +321,10 @@ export default function ThereadLogin(props) {
                                                 item ? item.UserName : null
                                             }
                                         </h6>
+
                                         {
-                                            state?.data.IDFollowed.find(item2 => item2.Name == item.UserName) ?
+                                            state?.data.IDFollowed &&
+                                                state?.data.IDFollowed.find(item2 => item2.Name == item.UserName) ?
                                                 <div>
                                                     <h6 className={style.space3}>
                                                         <Button
@@ -277,8 +348,12 @@ export default function ThereadLogin(props) {
                                         }
 
                                     </Col>
-                                    <Col sm={3}></Col>
-                                    <Col sm={3}></Col>
+                                    <Col sm={4}></Col>
+                                    <Col sm={2}>
+                                        <button className={style.Savebut} onClick={() => handleSave(item.UserID)}>
+                                            <h6 className={style.textSave}>save</h6>
+                                        </button>
+                                    </Col>
                                 </Row>
                                 <Row className={style.box}>
                                     <div >
@@ -307,7 +382,7 @@ export default function ThereadLogin(props) {
                                     <Col className={style.bag}>
                                         <div className={style.det}>
 
-                                            <Image src={gambar2} width="20px" height="20px" />
+                                            {/* <Image src={gambar2} width="20px" height="20px" /> */}
                                             {/* <div className={style.image}>
                                                 <label for="like-input">
                                                     <Image src={gambar} />
@@ -323,20 +398,27 @@ export default function ThereadLogin(props) {
 
                                                 />
                                             </div> */}
-                                            {/* <div className={style.love}>
-                                                <FcIcons.FcLike />
-                                            </div> */}
+                                            <div >
+                                                <button className={style.loveBut2} onClick={() => handleUnlike(item.ID)}>
+                                                    <IoIcons.IoHeartOutline size={20} />
+                                                </button>
+                                                <button className={style.loveBut} onClick={() => handleLike(item.ID)} >
+                                                    <FcIcons.FcLike size={20} className={style.love} />
+                                                </button>
+
+                                            </div>
 
                                             <h6 className={style.space8}>
                                                 {item ? item.Like : null}
                                             </h6>
+
                                             <Link to={`/Login/HomeLogin/${index}/Comment`} className={style.space9}>
                                                 <BiIcons.BiCommentDetail size={20} className={style.space10} />
                                             </Link>
                                             <h6 className={style.space8}>
 
                                                 <Link to={`/Login/HomeLogin/Comment/${item.ID}`}>
-                                                    <button onClick={() => HandleShow(item.ID)}>
+                                                    <button onClick={() => HandleShow(item.ID)} className={style.CommentBut}>
                                                         {item ? item.JumlahComment : null}
                                                     </button>
                                                 </Link>
@@ -357,14 +439,14 @@ export default function ThereadLogin(props) {
                                 </Row>
 
                                 {
-                                    show ?
+                                    show == item.ID ?
                                         <div >
                                             <ThreadComment />
                                             {/* {getData()} */}
-                                            benar {item.ID}
+                                            {/* ben{item.ID} */}
                                         </div>
 
-                                        : <div>salah</div>
+                                        : null
                                     //     state2?.data.data.filter(item => item.ID == id)map((item, index)=>{
                                     //     return()
                                     // })
@@ -376,7 +458,7 @@ export default function ThereadLogin(props) {
 
                                 }
                             </Container>
-                            {console.log(state2?.data.data.find(item => item.ID == id))}
+                            {/* {console.log(state2?.data.data.find(item => item.ID == id))} */}
                             {/* <Container show={show} onHide={handleClose}>
                                 <div>1234567890</div>
                             </Container> */}
@@ -391,10 +473,10 @@ export default function ThereadLogin(props) {
     )
 }
 
-function test() {
-    return (
-        <div>
-            asdsa
-        </div>
-    )
-}
+// function test() {
+//     return (
+//         <div>
+//             asdsa
+//         </div>
+//     )
+// }

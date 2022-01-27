@@ -16,12 +16,12 @@ export default function GetFollowed() {
             headers: { "Authorization": `Bearer ${token}` }
         })
             .then(res => {
-                console.log(res);
+                // console.log(res);
                 setState(res)
                 
                 // setProfile(res.data.data);
                 if (res.data.token) {
-                    console.log("berhasil")
+                    // console.log("berhasil")
                     
                 }
             }).catch(error => {

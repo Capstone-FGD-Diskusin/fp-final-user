@@ -79,6 +79,11 @@ export default function LoginContent() {
         if (isTrue) {
             console.log()
             // dispatch(login(res))
+            // if (role == moderator) {
+            //     history("/Login/HomeLoginModerator");
+            // } else {
+            //     history("/Login/HomeLogin");
+            // }
             history("/Login/HomeLogin");
             swal({
                 title: "Success",

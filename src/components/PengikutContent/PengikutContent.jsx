@@ -20,15 +20,15 @@ export default function PengikutContent(props) {
     // const stateFollowing = state?.data.IDFollowed
     const { state } = GetFollowing(props)
     // console.log("ini stateData", stateData ? stateData : null);
-    console.log("ini asdasds", Followedstate ? Followedstate : null);
-    console.log("ini state", state ? state?.data : null);
+    // console.log("ini asdasds", Followedstate ? Followedstate : null);
+    // console.log("ini state", state ? state?.data : null);
 
     const token = useSelector((state) => state.dataUser.token)
     let history = useNavigate();
     const URL = `http://localhost:1234/user/followed`
 
     const handleFollow = async (index) => {
-        console.log("ini index", index);
+        // console.log("ini index", index);
         let isTrue = false;
         const URL2 = `http://localhost:1234/user/follow`
         // index.preventDefault()
@@ -153,7 +153,8 @@ export default function PengikutContent(props) {
                     <h2 className={style.text}>Orang Yang Mengikuti Anda</h2>
                 </Row>
                 {
-                    stateData?.map((item, index) => {
+                    // Followedstate?.data.IDFollowed &&
+                    Followedstate?.data.IDFollowed.map((item, index) => {
                         return (
                             <div key={index}>
                                 <Row className={style.box} >
@@ -169,7 +170,8 @@ export default function PengikutContent(props) {
                                             <h6 className={style.text2}>Hapus</h6>
                                         </Button>
                                         {
-                                            state?.data.IDFollowed.find((item2 => item2.Name == item.Name)) ?
+                                            state?.data.IDFollowed &&
+                                                state?.data.IDFollowed.find((item2 => item2.Name == item.Name)) ?
                                                 <Button
                                                     Button className={style.butFol} >
                                                     <h6 className={style.text2}>Mengikuti</h6>

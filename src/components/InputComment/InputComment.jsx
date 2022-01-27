@@ -38,12 +38,12 @@ export default function InputComment(props) {
 
     const handleChange = (event) => {
         setBalasan({ ...data, [event.target.name]: event.target.value })
-        console.log(event.target.value);
+        // console.log(event.target.value);
     }
 
     const handleUpload = async (event) => {
         // console.log(event.target.value);
-        console.log(token);
+        // console.log(token);
 
         let isTrue = false;
         const URL = `http://localhost:1234/thread/comment`
@@ -195,7 +195,7 @@ export default function InputComment(props) {
                         </Modal.Header>
                         <Modal.Body>
                             <h5>{files ? files.Title : null}</h5>
-                            {files ? files.ImgUrl : null}
+                            <Image src={files ? files.ImgUrl : null} />
                             {files ? files.Description : null}
                             <br /> <br />
                             <h6>Balasan : {data.Balasan} </h6>

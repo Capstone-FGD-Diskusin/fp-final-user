@@ -26,7 +26,7 @@ export default function ThreadMengikutiContent(props) {
 
 
     // console.log("ini user", user ? user.data.data : null);
-    console.log("ini", state ? state.data.threads : null);
+    // console.log("ini", state ? state.data.threads : null);
 
     const handleLike = async (index) => {
         let isTrue = false;
@@ -39,11 +39,11 @@ export default function ThreadMengikutiContent(props) {
                 }
             })
             .then(res => {
-                console.log(res);
+                // console.log(res);
                 // console.log(res.data.token);
                 // dispatch(setToken(res.data.token));
                 if (res) {
-                    console.log("berhasil")
+                    // console.log("berhasil")
                     isTrue = true;
                 }
             }).catch(error => {

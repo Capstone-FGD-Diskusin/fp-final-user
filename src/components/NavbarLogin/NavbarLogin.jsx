@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { InputGroup, DropdownButton, Dropdown, FormControl } from 'react-bootstrap';
+import { InputGroup, DropdownButton, Dropdown, FormControl, Image } from 'react-bootstrap';
 import style from './NavbarLogin.module.css'
 // import { Container, Navbar, Nav, NavDropdown, Image, Button, ImageDropdown, Dropdown } from 'react-bootstrap'
 // import gambar from "../../img/profile.png"
@@ -9,11 +9,25 @@ import { NavbarLoginData } from './NavbarLoginData';
 import * as FiIcons from 'react-icons/fi';
 import * as FaIcons from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import gambar from "../../img/logoDiskusiin.png"
+import { useDispatch } from 'react-redux';
 
-export default function NavbarLogin() {
+import { setToken } from '../../store/slice';
+import GetProfileData from '../../Hooks/GET/GetProfileData';
+
+export default function NavbarLogin(props) {
+    const stateProfileData = GetProfileData(props)
+    const id = stateProfileData?.data.data.ID
+    // console.log(id);
     const [isDown, setIsDown] = useState(false);
     const setDown = () => {
         setIsDown(!isDown)
+    }
+
+    const dispatch = useDispatch()
+
+    const handleSubmit = async (e) => {
+        dispatch(setToken(""));
     }
 
     return (
@@ -21,7 +35,7 @@ export default function NavbarLogin() {
             <div className={style.navbar}>
                 <div className={style.content}>
                     <div className={style.logo}>
-                        LOGO
+                        <Link to={`/Login/HomeLogin`}><Image src={gambar} width="60px" /></Link>
                     </div>
                     <div className={style.middle}>
                         {
@@ -52,15 +66,19 @@ export default function NavbarLogin() {
                                 title={<FiIcons.FiSettings size={20} />}
 
                             >
-                                <Dropdown.Item href="#">Settings</Dropdown.Item>
-                                <Dropdown.Item href="#">testing</Dropdown.Item>
+                                <Dropdown.Item >
+                                    <Link className={style.linkN} to={`/Login/HomeLogin/Message`}>Send Message</Link>
+                                </Dropdown.Item>
+                                <Dropdown.Item >
+                                    <Link className={style.linkN} to={`/Login/HomeLogin/Profile/${id}/Edit`}>Settings</Link>
+                                </Dropdown.Item>
                                 <Dropdown.Divider />
-                                <Dropdown.Item href="#">Logout</Dropdown.Item>
+                                <Dropdown.Item onClick={handleSubmit}>Logout</Dropdown.Item>
                             </DropdownButton>
 
                         </div>
                         <div className={style.profile}>
-                            <Link to={`/CekLogin/HomeLogin/Profile`}><FiIcons.FiUser size={20} /></Link>
+                            <Link to={`/Login/HomeLogin/Profile/${id}`}><FiIcons.FiUser size={20} /></Link>
                         </div>
                     </div>
                 </div>

@@ -23,7 +23,7 @@
 
 .text {
     margin-top: 5px;
-    margin-left: 10px
+    margin-left: 7px
 }
 
 .text2 {
@@ -34,7 +34,7 @@
 
 .text3 {
     margin-top: 5px;
-    margin-left: 3px;
+    margin-left: 4px;
     text-decoration: none;
     color: black;
 }
@@ -48,4 +48,40 @@
     margin-right: -10px; */
     margin-top: 5px;
     margin-left: 20px
+}
+
+.text5 {
+    margin-right: 4px;
+}
+
+.space5 {
+    margin-right: 2px;
+}
+
+.bag {
+    display: flex;
+}
+
+.img {
+    margin-top: 4px;
+}
+
+.editProf {
+    margin-top: 10px;
+    background-color: #FF8834;
+    border: #FF8834;
+}
+
+.linkEdit {
+    color: white;
+    text-decoration: none;
+}
+
+.linkEdit:hover {
+    color: white;
+    text-decoration: none;
+}
+
+.posisi {
+    display: flex;
 }

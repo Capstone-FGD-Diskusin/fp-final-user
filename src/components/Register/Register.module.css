@@ -4,6 +4,7 @@
 
 .space1 {
     padding-top: 60px;
+    padding-bottom: 60px;
 }
 
 .text1 {
@@ -12,7 +13,7 @@
 
 .text2 {
     text-align: center;
-    padding-top: 39px;
+    padding-top: 20px;
     padding-bottom: 39px;
 }
 
@@ -29,6 +30,10 @@
     padding-top: 30px;
 }
 
+.space3 {
+    margin-bottom: 10px;
+}
+
 .text3:hover {
     color: blue;
 }
@@ -36,4 +41,19 @@
 .ButDaf {
     background-color: rgba(55, 63, 65, 1);
     border: rgba(55, 63, 65, 1);
+}
+
+input[type=password] {
+    /* border: 2px solid rgba(255, 136, 52, 1); */
+    border-radius: 4px;
+}
+
+input[type=number] {
+    /* border: 2px solid rgba(255, 136, 52, 1); */
+    border-radius: 4px;
+}
+
+input[type=file] {
+    border: 2px solid rgba(255, 136, 52, 1);
+    border-radius: 4px;
 }

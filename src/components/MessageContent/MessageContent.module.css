@@ -1,0 +1,76 @@
+.space {
+    margin-top: 60px;
+}
+
+.text2 {
+    background-color: rgba(255, 136, 52, 1);
+    color: white;
+    border-color: rgba(255, 136, 52, 1);
+    border-radius: 10px;
+}
+
+.text2:hover {
+    background-color: rgba(255, 136, 52, 1);
+    color: white;
+    border-color: rgba(255, 136, 52, 1);
+}
+
+.text3 {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.butin {
+    background-color: white;
+    border-color: white;
+    color: none;
+}
+
+.butin:hover {
+    background-color: white;
+    border-color: rgba(255, 136, 52, 1);
+}
+
+.unduh {
+    margin-right: 10px;
+    margin-top: 2px;
+}
+
+.unggah {
+    margin-top: 10px;
+    display: flex;
+    justify-content: right;
+    gap: 1rem;
+}
+
+.posisi {
+    display: flex;
+    padding-bottom: -10px;
+}
+
+.texts {
+    border-color: rgba(255, 136, 52, 1);
+    color: black;
+    margin-bottom: 10px;
+}
+
+.texts:focus {
+    outline: none;
+}
+
+.thread {
+    border-color: rgba(255, 136, 52, 1);
+    height: 150px;
+    margin-bottom: 10px;
+}
+
+.inputText {
+    border-color: rgba(255, 136, 52, 1);
+    margin-bottom: 5px;
+}
+
+
+.image input {
+    display: none;
+}

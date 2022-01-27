@@ -105,11 +105,14 @@ Dropdown-Toogle {
     letter-spacing: 0.2px;
     text-transform: uppercase;
     color: #FF8834;
+
 }
 
 .middle {
     display: flex;
     gap: 2rem;
+    margin-left: 50px;
+
 }
 
 .right {
@@ -167,4 +170,9 @@ Dropdown-Toogle {
     color: white;
     background-color: white;
 
+}
+
+.linkN {
+    color: black;
+    text-decoration: none;
 }

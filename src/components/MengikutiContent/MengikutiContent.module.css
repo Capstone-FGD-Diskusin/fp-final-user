@@ -38,10 +38,23 @@
     color: white;
     border-radius: 4px;
     border: #FF8834;
-    /* text-align: right; */
+    text-align: right;
     align-content: center;
     text-align: center;
     align-items: center;
     margin-top: 4px;
     margin-bottom: 5px;
+
+}
+
+.butFol:hover:before {
+    content: "Berhenti Mengikuti";
+}
+
+.butFol:hover h6 {
+    display: none;
+}
+
+.text2 {
+    text-align: center;
 }

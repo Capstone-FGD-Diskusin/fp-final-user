@@ -1,12 +1,12 @@
 import React from 'react'
 import { Button, Col, Container, Image, Row } from 'react-bootstrap'
-import style from './ContentHome.module.css'
+import style from './HomeDefContent.module.css'
 import gambar from "../../img/HomeDefault.png"
 import gambar1 from "../../img/bag.png"
 import gambar2 from "../../img/lingkaran.png"
 import gambar3 from "../../img/obeng.png"
 
-export default function ContentHome() {
+export default function HomeDefContent() {
     return (
         <div>
             <Container>

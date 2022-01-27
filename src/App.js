@@ -1,4 +1,4 @@
-import { BrowserRouter ,Route, Routes } from "react-router-dom";
+import { BrowserRouter ,Route, Routes, PrivateRoute } from "react-router-dom";
 import HomeDefault from "./pages/HomeDefault/HomeDefault";
 import React from 'react';
 import Register from "./pages/Register/Register";
@@ -10,26 +10,51 @@ import Mengikuti from "./pages/Mengikuti/Mengikuti";
 import Profile from "./pages/Profile/Profile";
 import Pengikut from "./pages/Pengikut/Pengikut";
 import Peringkat from "./pages/Peringkat/Peringkat";
+
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/lib/integration/react';
+import { persistor, store } from "./store/store";
+import Kategori from "./pages/Kategori/Kategori";
+import ThreadMengikuti from "./pages/ThreadMengikuti/ThreadMengikuti";
+import ProfileEdit from "./pages/ProfileEdit/ProfileEdit";
+import Message from "./pages/Message/Message";
+import Favorite from "./pages/Favorite/Favorite";
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
+
+      <Provider store={store}>
+        <PersistGate persistor={persistor}>
+        <BrowserRouter>
         <Routes>
+          
           <Route path="/" element={<HomeDefault/>}/>
           <Route path="/Login" element={<Login/>}/>
           <Route path="/Register" element={<Register/>}/>
           <Route path="/CekLogin" element={<CekLogin/>}/>
-          <Route path="/CekLogin/HomeLogin/Profile" element={<Profile/>}/>
+          {/* <PrivateRoute/> */}
+          <Route path="/Login/HomeLogin/Profile/:id/" element={<Profile/>}/>
+          <Route path="/Login/HomeLogin/Profile/:id/Favorite/" element={<Favorite/>}/>
+          <Route path="/Login/HomeLogin/Profile/:id/Edit" element={<ProfileEdit/>}/>
           <Route path="/Login/HomeLogin" element={<HomeLogin/>}/>
+          <Route path="/Login/HomeLogin/Message" element={<Message/>}/>
+          <Route path="/Login/HomeLogin/Comment/:id" element={<HomeLogin/>}/>
+          <Route path="/Login/HomeLogin/Mengikuti" element={<ThreadMengikuti/>}/>
+          {/* <Route path="/Login/HomeLogin:id" element={<HomeLogin/>}/> */}
           <Route path="/Login/HomeLogin/Peringkat" element={<Peringkat/>}/>
           <Route path="/Login/HomeLogin/Profile/Mengikuti" element={<Mengikuti/>}/>
           <Route path="/Login/HomeLogin/Profile/Pengikut" element={<Pengikut/>}/>
           {/* <Route path="/Login/HomeLogin/Trend" element={<HomeLogin/>}/> */}
           <Route path="/Login/HomeLogin/:id/Comment" element={<Comment/>}/>
+          <Route path="/Login/HomeLogin/:id/" element={<Kategori/>}/>
         </Routes>
-      </BrowserRouter>
+
+
+        </BrowserRouter>
+        </PersistGate>
+      </Provider>
     </div>
   );
 }

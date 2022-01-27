@@ -12,6 +12,10 @@
     color: rgba(208, 208, 208, 1);
 }
 
+.space4 {
+    margin-bottom: 50px;
+}
+
 .mid {
     text-align: center;
     align-items: center;
@@ -20,11 +24,12 @@
 
 .text1 {
     color: rgba(255, 136, 52, 1);
+    /* padding-bottom: ; */
 }
 
 .text2 {
     text-align: center;
-    padding-top: 39px;
+    padding-top: 20px;
     padding-bottom: 39px;
 }
 

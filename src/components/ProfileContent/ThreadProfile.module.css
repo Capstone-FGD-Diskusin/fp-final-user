@@ -31,6 +31,28 @@
     margin-bottom: 40px;
 }
 
+.space8 {
+    margin-left: 5px;
+}
+
+.space9 {
+    margin-left: 10px;
+}
+
+.space10 {
+    margin-bottom: 5px;
+}
+
+.space11 {
+    margin-left: 10px;
+    margin-top: 3px;
+}
+
+.space12 {
+    margin-left: 5px;
+    margin-top: 3px;
+}
+
 .posisi {
     display: flex;
     position: relative;
@@ -59,4 +81,54 @@
 
 .kanan {
     text-align: right;
+}
+
+.det {
+    display: flex;
+
+
+
+}
+
+.bag {
+    justify-content: space-between;
+    display: flex;
+}
+
+.text {
+    color: black;
+    margin-bottom: 5px;
+    text-decoration: none;
+}
+
+.text:hover {
+    color: rgba(255, 136, 52, 1);
+}
+
+.butEdit {
+    background-color: white;
+    color: rgba(255, 136, 52, 1);
+    border-color: white;
+}
+
+.butEdit:Hover {
+    background-color: rgba(255, 136, 52, 1);
+    color: white;
+}
+
+.butDel {
+    background-color: white;
+    color: rgba(255, 136, 52, 1);
+    margin-left: 5px;
+    border-color: white;
+}
+
+.butDel:hover {
+    background-color: rgba(255, 136, 52, 1);
+    color: white;
+
+}
+
+.spaceThread {
+    margin-bottom: 30px;
 }

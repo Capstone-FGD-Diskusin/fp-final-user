@@ -7,7 +7,7 @@ import swal from 'sweetalert';
 export default function GetAllThreadBYUser() {
     const [state,setState] = useState(null)
     
-    const URL = `http://localhost:1234/user?=1234/threads`
+    const URL = `http://34.101.171.217:1234/user?=1234/threads`
     let history = useNavigate();
 
     useEffect(() => {

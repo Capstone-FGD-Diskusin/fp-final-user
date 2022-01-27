@@ -16,7 +16,7 @@ export default function ThreadMengikuti() {
     const token = useSelector((state) => state.dataUser.token)
     let history = useNavigate();
 
-    const URL = `http://localhost:1234/user`
+    const URL = `http://34.101.171.217:1234/user`
     // console.log("ini token", token);
     useEffect(() => {
         if (token == "") {

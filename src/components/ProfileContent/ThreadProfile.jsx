@@ -24,13 +24,13 @@ export default function ThreadProfile(props) {
     const { id } = useParams();
     const [state, setState] = useState(null)
     // console.log("ini state", state ? state : null);
-    const URL = `http://localhost:1234/user/` + id + `/threads`
+    const URL = `http://34.101.171.217:1234/user/` + id + `/threads`
     const i = 0
 
     let history = useNavigate();
 
     const handleDelete = (index) => {
-        const URLDEL = `http://localhost:1234/thread/` + index + ``
+        const URLDEL = `http://34.101.171.217:1234/thread/` + index + ``
         Axios.delete(URLDEL, {
             headers: { "Authorization": `Bearer ${token}` },
         })

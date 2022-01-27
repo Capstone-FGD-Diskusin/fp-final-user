@@ -58,7 +58,7 @@ export default function OpenDiscuss(props) {
         console.log(token);
 
         let isTrue = false;
-        const URL = `http://localhost:1234/thread`
+        const URL = `http://34.101.171.217:1234/thread`
         // event.preventDefault()
         await Axios.post(URL, {
             title: data.title,

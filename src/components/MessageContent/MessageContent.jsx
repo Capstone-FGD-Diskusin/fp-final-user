@@ -54,7 +54,7 @@ export default function MessageContent(props) {
         // console.log(token);
 
         let isTrue = false;
-        const URL = `http://localhost:1234/message`
+        const URL = `http://34.101.171.217:1234/message`
         // event.preventDefault()
         await Axios.post(URL, {
             thread_id: data.title,

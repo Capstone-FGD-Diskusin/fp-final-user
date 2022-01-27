@@ -58,7 +58,7 @@ export default function ProfileEditContent(props) {
     const handleShow = () => setShow(true);
 
     const handleEdit = (index) => {
-        const URLPut = `http://localhost:1234/user`
+        const URLPut = `http://34.101.171.217:1234/user`
         Axios.put(URLPut,
             {
                 email: data.email,
@@ -118,7 +118,7 @@ export default function ProfileEditContent(props) {
         // setMengikuti(newData)
         // console.log("ini newData", newData);
 
-        const URL = `http://localhost:1234/user/` + index + ``
+        const URL = `http://34.101.171.217:1234/user/` + index + ``
         Axios.delete(URL, {
             headers: { "Authorization": `Bearer ${token}` },
         })

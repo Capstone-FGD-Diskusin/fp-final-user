@@ -8,7 +8,7 @@ import swal from 'sweetalert';
 export default function GetAllCategory() {
     const [state,setState] = useState(null)
     
-    const URL = `http://localhost:1234/category`
+    const URL = `http://34.101.171.217:1234/category`
     let history = useNavigate();
 
     useEffect(() => {

@@ -30,7 +30,7 @@ export default function ProfileContent(props) {
     const [stateProfile, setStateProfile] = useState(null)
 
     console.log("ini stateprofile", stateProfile ? stateProfile : null);
-    const URL = `http://localhost:1234/user/` + id + ``
+    const URL = `http://34.101.171.217:1234/user/` + id + ``
     let history = useNavigate();
 
     useEffect(() => {

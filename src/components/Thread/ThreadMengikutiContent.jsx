@@ -30,7 +30,7 @@ export default function ThreadMengikutiContent(props) {
 
     const handleLike = async (index) => {
         let isTrue = false;
-        const URL = `http://localhost:1234/like`
+        const URL = `http://34.101.171.217:1234/like`
         await Axios.post(URL,
             {
                 headers: { "Authorization": `Bearer ${token}` },

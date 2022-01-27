@@ -33,7 +33,7 @@ export default function ThereadLogin(props) {
     const handleUnlike = async (index) => {
         let isTrue = false;
         console.log("ini index", index);
-        const URL = `http://34.101.171.217:1234/like`
+        const URL = `http://34.101.171.217:1234/user/thread/follow`
         await Axios.delete(URL, {
             headers: { "Authorization": `Bearer ${token}` },
             data:
@@ -350,6 +350,7 @@ export default function ThereadLogin(props) {
                                     </Col>
                                     <Col sm={4}></Col>
                                     <Col sm={2}>
+                                        {console.log("ini item", item ? item : null)}
                                         <button className={style.Savebut} onClick={() => handleSave(item.UserID)}>
                                             <h6 className={style.textSave}>save</h6>
                                         </button>

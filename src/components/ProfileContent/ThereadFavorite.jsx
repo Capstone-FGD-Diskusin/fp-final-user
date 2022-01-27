@@ -24,7 +24,7 @@ export default function ThreadFavorite(props) {
     const { id } = useParams();
     const [state, setState] = useState(null)
     // console.log("ini state", state ? state : null);
-    const URL = `http://localhost:1234/user/` + id + `/threads`
+    const URL = `http://34.101.171.217:1234/user/` + id + `/threads`
     const i = 0
 
     let history = useNavigate();

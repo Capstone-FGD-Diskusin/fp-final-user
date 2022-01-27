@@ -4,9 +4,10 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import NavbarLogin from '../../components/NavbarLogin/NavbarLogin'
 import ProfileContent from '../../components/ProfileContent/ProfileContent'
-import ThreadProfile from '../../components/ProfileContent/ThreadProfile';
+import ThreadFavorite from '../../components/ProfileContent/ThereadFavorite'
 
-export default function Profile() {
+
+export default function Favorite() {
     const token = useSelector((state) => state.dataUser.token)
     let history = useNavigate();
 
@@ -26,10 +27,9 @@ export default function Profile() {
                     <Col sm={1}></Col>
                     <Col sm={10}>
                         <ProfileContent />
-                        <ThreadProfile />
+                        <ThreadFavorite />
                     </Col>
                     <Col sm={1}></Col>
-
 
                 </Row>
             </Container>

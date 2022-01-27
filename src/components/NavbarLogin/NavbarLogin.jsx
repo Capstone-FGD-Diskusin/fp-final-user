@@ -10,6 +10,9 @@ import * as FiIcons from 'react-icons/fi';
 import * as FaIcons from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import gambar from "../../img/logoDiskusiin.png"
+import { useDispatch } from 'react-redux';
+
+import { setToken } from '../../store/slice';
 import GetProfileData from '../../Hooks/GET/GetProfileData';
 
 export default function NavbarLogin(props) {
@@ -19,6 +22,12 @@ export default function NavbarLogin(props) {
     const [isDown, setIsDown] = useState(false);
     const setDown = () => {
         setIsDown(!isDown)
+    }
+
+    const dispatch = useDispatch()
+
+    const handleSubmit = async (e) => {
+        dispatch(setToken(""));
     }
 
     return (
@@ -64,7 +73,7 @@ export default function NavbarLogin(props) {
                                     <Link className={style.linkN} to={`/Login/HomeLogin/Profile/${id}/Edit`}>Settings</Link>
                                 </Dropdown.Item>
                                 <Dropdown.Divider />
-                                <Dropdown.Item href="#">Logout</Dropdown.Item>
+                                <Dropdown.Item onClick={handleSubmit}>Logout</Dropdown.Item>
                             </DropdownButton>
 
                         </div>

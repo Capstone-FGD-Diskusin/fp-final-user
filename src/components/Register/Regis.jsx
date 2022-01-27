@@ -8,17 +8,9 @@ import gambar1 from "../../img/Register.jpg"
 import gambar4 from "../../img/logoDiskusiin.png"
 import Axios from 'axios';
 import swal from 'sweetalert';
-import {
-    setUsernameRegis,
-    setAddressRegis,
-    setEmailRegis,
-    setFileRegis,
-    setPhoneRegis,
-    setPasswordRegis
-} from '../../store/slice';
 
 const dataRegis = {
-    fileRegis: "",
+    // fileRegis: "",
     usernameRegis: "",
     passwordRegis: "",
     emailRegis: "",
@@ -26,101 +18,160 @@ const dataRegis = {
     phoneRegis: "",
     genderRegis: "",
 };
+const baseErrors = {
+    fileRegis: "",
+    usernameRegis: "",
+    passwordRegis: "",
+    emailRegis: "",
+    addressRegis: "",
+    phoneRegis: "",
+
+};
 
 export default function Regis() {
     let history = useNavigate();
+    const regex = /^[A-Za-z]*$/;
+
     const [validated, setValidated] = useState(false);
     const [data, setData] = useState(dataRegis)
+    const [errMsg, setErrMsg] = useState(baseErrors)
 
     const handleChange = (event) => {
-        setData({ ...data, [event.target.name]: event.target.value });
-        console.log(data.usernameRegis);
-    }
+        const name = event.target.name;
+        const value = event.target.value;
 
-    const dispatch = useDispatch()
+
+        if (name === "usernameRegis") {
+            if (regex.test(value)) {
+                console.log("1");
+                setErrMsg("")
+            } else {
+                setErrMsg("Nama harus berupa huruf")
+            }
+        }
+
+        if (name === "passwordRegis") {
+            if (value.length > 5) {
+                setErrMsg("");
+                console.log("3");
+            } else {
+
+                setErrMsg(name, "password harus diisi");
+            }
+        }
+
+        if (name === "emailRegis") {
+            if (value.length > 0 && !value.includes("@")) {
+                setErrMsg(name, "email kurang @ !");
+            } else {
+                console.log("2");
+                setErrMsg("");
+            }
+        }
+
+        if (name === "addressRegis") {
+            if (value.length > 0) {
+                setErrMsg("");
+                console.log("4");
+            } else {
+
+                setErrMsg(name, "alamat harus diisi");
+            }
+        }
+        if (name === "phoneRegis") {
+            if (value.length > 5) {
+                setErrMsg("");
+                console.log("5");
+            } else {
+                setErrMsg(name, "nomer anda kurang");
+            }
+        }
+
+
+        setData({ ...data, [event.target.name]: event.target.value });
+        // console.log(data.usernameRegis);
+    }
+    // const [validated, setValidated] = useState(false);
+
 
     const handleSubmit = async (e) => {
-        console.log(data);
+        setValidated(true)
         let isTrue = false;
+        let benar = true
         const URL = `http://localhost:1234/user`
-        await Axios.post(URL,
-            {
-                // email: data.fileRegis,
-                username: data.usernameRegis,
-                password: data.passwordRegis,
-                email: data.emailRegis,
-                alamat: data.addressRegis,
-                gender: data.genderRegis,
-                phone: data.phoneRegis,
-            })
-            .then(res => {
-                console.log(res);
-                // console.log(res.data.token);
-                // dispatch(setToken(res.data.token));
-                if (res) {
-                    console.log("berhasil")
-                    isTrue = true;
-                }
-            }).catch(error => {
-                // this.setError()
-                console.log(error)
-                if (error.response) {
-                    console.log("--------------------------------------------------")
-                    // The request was made and the server responded with a status code
-                    // that falls out of the range of 2xx
-                    console.log(error.response.data);
-                    console.log(error.response.status);
-                    console.log(error.response.headers);
-                } else if (error.request) {
-                    console.log("*************************")
 
-                    // The request was made but no response was received
-                    // error.request is an instance of XMLHttpRequest in the browser and an instance of
-                    // http.ClientRequest in node.js
-                    console.log(error.request);
-                } else {
-                    console.log("++++++++++++++++++++++++")
-                    // Something happened in setting up the request that triggered an Error
-                    console.log('Error', error.message);
-                }
-                console.log(error.config);
-            })
 
-        if (isTrue) {
-            console.log()
-            // dispatch(login(res))
-            history("/Login");
-            swal({
-                title: "Success",
-                text: "Register Berhasil",
-                icon: "success",
-            });
+        if (errMsg !== "") {
+            alert("Terdapat data yang tidak sesuai")
         } else {
-            return swal({
-                title: "Error",
-                text: "Password atau Email salah",
-                icon: "error",
-            });
-            // e.preventDefault();
+            await Axios.post(URL,
+                {
+                    // email: data.fileRegis,
+                    username: data.usernameRegis,
+                    password: data.passwordRegis,
+                    email: data.emailRegis,
+                    alamat: data.addressRegis,
+                    gender: data.genderRegis,
+                    phone: data.phoneRegis,
+                }
+            )
+                .then(res => {
+                    console.log(res);
+                    // console.log(res.data.token);
+                    // dispatch(setToken(res.data.token));
+                    if (res) {
+                        console.log("berhasil")
+                        isTrue = true;
+                    }
+                }).catch(error => {
+                    // this.setError()
+                    console.log(error)
+                    if (error.response) {
+                        console.log("--------------------------------------------------")
+                        // The request was made and the server responded with a status code
+                        // that falls out of the range of 2xx
+                        console.log(error.response.data);
+                        console.log(error.response.status);
+                        console.log(error.response.headers);
+                    } else if (error.request) {
+                        console.log("*************************")
+
+                        // The request was made but no response was received
+                        // error.request is an instance of XMLHttpRequest in the browser and an instance of
+                        // http.ClientRequest in node.js
+                        console.log(error.request);
+                    } else {
+                        console.log("++++++++++++++++++++++++")
+                        // Something happened in setting up the request that triggered an Error
+                        console.log('Error', error.message);
+                    }
+                    console.log(error.config);
+                })
+
+            if (isTrue) {
+                console.log()
+                // dispatch(login(res))
+                history("/Login");
+                swal({
+                    title: "Success",
+                    text: "Register Berhasil",
+                    icon: "success",
+                });
+            } else {
+                return swal({
+                    title: "Error",
+                    text: "Password atau Email salah",
+                    icon: "error",
+                });
+                // e.preventDefault();
+            }
         }
+
+
+
     }
 
-    // const handleSubmit = (event) => {
-    //     const form = event.currentTarget;
-    //     if (form.checkValidity() === false) {
-    //         event.preventDefault();
-    //         event.stopPropagation();
-    //     }
-    //     setValidated(true);
-    //     dispatch(setFileRegis(data.fileRegis))
-    //     dispatch(setUsernameRegis(data.usernameRegis))
-    //     // dispatch(setPasswordRe(data.passwordRegis))
-    //     dispatch(setPasswordRegis(data.passwordRegis))
-    //     dispatch(setEmailRegis(data.emailRegis))
-    //     // dispatch(setPasswordRe(data.passwordRegis))
-    //     dispatch(setAddressRegis(data.addressRegis))
-    //     dispatch(setPhoneRegis(data.phoneRegis))
-    // };
+
     return (
         <div>
             <Container className={style.space}>
@@ -134,7 +185,9 @@ export default function Regis() {
                         <h3 className={style.text1}><Image src={gambar4} width="25%" /></h3>
                         <h4 className={style.text2}>Register</h4>
 
-                        <Form noValidate validated={validated} onSubmit={handleSubmit}>
+                        <Form onSubmit={handleSubmit}
+                            noValidate validated={validated}
+                        >
                             {/* <Row className="mb-3">
                                 <Form.Group controlId="validationCustom06">
                                     <Form.Control
@@ -176,7 +229,7 @@ export default function Regis() {
                                         placeholder="Password"
                                     />
                                     <Form.Control.Feedback type="invalid">
-                                        Password is Required
+                                        Password is Required and need 5 letter
                                     </Form.Control.Feedback>
                                 </Form.Group>
                             </Row >
@@ -225,7 +278,7 @@ export default function Regis() {
                                         required
                                     />
                                     <Form.Control.Feedback type="invalid">
-                                        Phone Number is Required
+                                        Phone Number is Required and need 6 number
                                     </Form.Control.Feedback>
                                 </Form.Group>
                             </Row>
@@ -234,7 +287,7 @@ export default function Regis() {
                                 name="genderRegis"
                                 value={data.genderRegis}
                             >
-                                <option>Gender</option>
+
                                 <option value="Laki-Laki">Laki-Laki</option>
                                 <option value="Perempuan">Perempuan</option>
                             </Form.Select>

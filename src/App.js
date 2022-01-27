@@ -18,6 +18,7 @@ import Kategori from "./pages/Kategori/Kategori";
 import ThreadMengikuti from "./pages/ThreadMengikuti/ThreadMengikuti";
 import ProfileEdit from "./pages/ProfileEdit/ProfileEdit";
 import Message from "./pages/Message/Message";
+import Favorite from "./pages/Favorite/Favorite";
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
           <Route path="/CekLogin" element={<CekLogin/>}/>
           {/* <PrivateRoute/> */}
           <Route path="/Login/HomeLogin/Profile/:id/" element={<Profile/>}/>
+          <Route path="/Login/HomeLogin/Profile/:id/Favorite/" element={<Favorite/>}/>
           <Route path="/Login/HomeLogin/Profile/:id/Edit" element={<ProfileEdit/>}/>
           <Route path="/Login/HomeLogin" element={<HomeLogin/>}/>
           <Route path="/Login/HomeLogin/Message" element={<Message/>}/>

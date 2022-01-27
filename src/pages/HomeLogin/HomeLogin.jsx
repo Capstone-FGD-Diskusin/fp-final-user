@@ -24,6 +24,7 @@ export default function HomeLogin() {
         }
     }, [token])
 
+
     // useEffect(() => {
     //     if (token) {
     //         const getData = async () => {

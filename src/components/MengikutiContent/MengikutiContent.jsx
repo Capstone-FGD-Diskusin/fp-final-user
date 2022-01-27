@@ -16,7 +16,7 @@ export default function MengikutiContent(props) {
     const { state, getData } = GetFollowing(props)
     const files = state?.data.IDFollowed
 
-    console.log("ini state getfollowing", state);
+    // console.log("ini state getfollowing", state);
 
 
     const token = useSelector((state) => state.dataUser.token)
@@ -42,7 +42,7 @@ export default function MengikutiContent(props) {
         })
             .then(res => {
                 getData()
-                console.log("ini get data", getData);
+                // console.log("ini get data", getData);
             })
             .catch(error => {
                 // this.setError()
@@ -85,6 +85,7 @@ export default function MengikutiContent(props) {
                     <h2 className={style.text}>Orang Yang Anda Ikuti</h2>
                 </Row>
                 {
+                    state?.data.IDFollowed &&
                     state?.data.IDFollowed.map((item, index) => {
                         return (
                             <div key={index}>
@@ -105,6 +106,7 @@ export default function MengikutiContent(props) {
                             </div>
                         )
                     })
+
                 }
             </Container>
         </div>

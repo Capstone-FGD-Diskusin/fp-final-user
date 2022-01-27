@@ -8,15 +8,27 @@ import Axios from 'axios';
 import gambar2 from "../../img/unduh.png"
 import swal from 'sweetalert';
 import GetAllCategory from '../../Hooks/GET/GetAllCategory';
+import { useEffect } from 'react';
+import GetAllThread from '../../Hooks/GET/GetAllThread';
 
 export default function MessageContent(props) {
     const token = useSelector((state) => state.dataUser.token)
     const file = useRef(null);
-    const state = GetAllCategory(props)
-    // console.log(state.data.data);
+    const state = GetAllThread(props)
+    const stateKat = GetAllCategory(props)
+    console.log("ini stateKat", stateKat ? stateKat : null);
+    console.log("ini state", state ? state : null);
 
+    // useEffect(() => {
+    //     setData({
+    //         kategori: state.data.data.ID
+    //     })
+    // },
+    //     [state]);
+
+    // message tinggal data thread
     const dataThread = {
-        title: "",
+        title: ``,
         pesan: "",
         // img: "",
         kategori: "",
@@ -37,15 +49,17 @@ export default function MessageContent(props) {
     }
 
     const handleUpload = async (event) => {
-        console.log(data);
-        console.log(token);
+
+        // console.log(data);
+        // console.log(token);
 
         let isTrue = false;
         const URL = `http://localhost:1234/message`
         // event.preventDefault()
         await Axios.post(URL, {
-            text: "data.pesan",
-            category_name: "data.kategori",
+            thread_id: data.title,
+            text: data.pesan,
+            category_name: data.kategori,
             admin_id: 5
         }, {
             headers: { "Authorization": `Bearer ${token}` },
@@ -111,6 +125,32 @@ export default function MessageContent(props) {
                 >
                     <Row>
                         <Col>
+                            <Form.Select className={style.texts}
+                                onChange={handleChange}
+                                name="title"
+                                value={data.title}
+                            >
+                                <option>Title </option>
+                                {
+                                    state?.data.data.map((item, index) => {
+                                        return (
+                                            <>
+
+                                                <option value={item ? item.ID : null}>{item ? item.Title : null}</option>
+                                            </>
+                                        )
+                                    })
+                                }
+                            </Form.Select>
+                            {/* <Form.Control
+                                name="title"
+                                value={data.title}
+                                onChange={handleChange}
+                                className={style.inputText}
+                                type="text"
+                                label="Title"
+                                placeholder="Title"
+                            /> */}
                             <Form.Control
                                 name="pesan"
                                 value={data.pesan}
@@ -128,7 +168,7 @@ export default function MessageContent(props) {
                             >
                                 <option>Kategori</option>
                                 {
-                                    state?.data.data.map((item, index) => {
+                                    stateKat?.data.data.map((item, index) => {
                                         return (
                                             <>
 
@@ -158,6 +198,7 @@ export default function MessageContent(props) {
                                     <Modal.Title>Pesan Untuk Admin</Modal.Title>
                                 </Modal.Header>
                                 <Modal.Body>
+                                    <h5>Title: {data.title}</h5>
                                     <h5>Pesan: {data.pesan}</h5>
                                     <h6>Kategori : {data.kategori}</h6>
 

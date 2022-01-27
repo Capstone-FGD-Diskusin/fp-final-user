@@ -21,7 +21,7 @@ export default function GetFollowing() {
                 
                 // setProfile(res.data.data);
                 if (res.data.token) {
-                    console.log("berhasil")
+                    // console.log("berhasil")
                     
                 }
             }).catch(error => {
